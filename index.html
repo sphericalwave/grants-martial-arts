@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grant's Martial Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #0a0d14;
+      --surface:       #0f1219;
+      --card:          #141820;
+      --card-hi:       #1a2030;
+      --card-higher:   #222a3a;
+      --border:        rgba(99,150,255,0.1);
+      --border-hover:  rgba(99,150,255,0.28);
+      --primary:       #3b82f6;
+      --primary-dim:   #93c5fd;
+      --on-primary:    #fff;
+      --text:          #e2e8f0;
+      --text-muted:    #7a8fa8;
+      --outline:       #4a6fa8;
+      --radius-card:   1.5rem;
+      --radius-btn:    9999px;
+      --gap:           1.5rem;
+      --gutter:        4rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── PAGES ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,13,20,0.82);
+      border-bottom: 1px solid var(--border);
+      padding: 0 var(--gutter);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 6px;
+      display: block;
+      flex-shrink: 0;
+      /* remove white JPEG background on dark surface */
+      mix-blend-mode: screen;
+      filter: invert(1) hue-rotate(180deg);
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .nav-logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+      flex: 1;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); background: var(--card-higher); }
+
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--primary);
+      color: var(--on-primary);
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 0.5rem 1.25rem;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.12s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    section { padding: 5rem 0; }
+
+    .label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    h1, h2, h3, h4 { font-family: 'Bebas Neue', sans-serif; line-height: 1.05; }
+
+    .display { font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: 0.02em; }
+    .headline-lg { font-size: clamp(2.25rem, 4vw, 3rem); letter-spacing: 0.03em; }
+    .headline-md { font-size: 2rem; letter-spacing: 0.02em; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: var(--on-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 0.8125rem 1.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.12s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius-btn);
+      padding: 0.75rem 1.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, transform 0.12s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-1px); }
+
+    /* ── BENTO GRID ── */
+    .bento {
+      display: grid;
+      gap: var(--gap);
+    }
+
+    .bento-2col { grid-template-columns: repeat(2, 1fr); }
+    .bento-3col { grid-template-columns: repeat(3, 1fr); }
+    .bento-4col { grid-template-columns: repeat(4, 1fr); }
+    .bento-12 { grid-template-columns: repeat(12, 1fr); }
+
+    .span-3  { grid-column: span 3; }
+    .span-4  { grid-column: span 4; }
+    .span-5  { grid-column: span 5; }
+    .span-6  { grid-column: span 6; }
+    .span-7  { grid-column: span 7; }
+    .span-8  { grid-column: span 8; }
+    .span-9  { grid-column: span 9; }
+    .span-12 { grid-column: span 12; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 1.75rem;
+      transition: border-color 0.2s, background 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+    .card:hover { border-color: var(--border-hover); background: var(--card-hi); }
+
+    .card-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .card-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+      border-radius: var(--radius-card);
+    }
+    .card-photo .card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2;
+      padding: 1.75rem;
+    }
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-card);
+      display: block;
+    }
+
+    .card-glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(59,130,246,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(59,130,246,0.06) 0%, transparent 50%),
+        #0a0d14;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .hero-title { color: var(--text); margin-bottom: 1.25rem; }
+    .hero-title em { color: var(--primary); font-style: normal; }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.75rem;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-badge {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 0.75rem;
+      padding: 0.875rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .hero-badge .icon { font-size: 1.25rem; }
+
+    /* ── PROGRAMS ── */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
+
+    .prog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 2rem;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .prog-card:hover {
+      border-color: var(--border-hover);
+      background: var(--card-hi);
+      transform: translateY(-3px);
+    }
+
+    .prog-icon {
+      width: 52px; height: 52px;
+      border-radius: 0.75rem;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .prog-tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(59,130,246,0.1);
+      border-radius: 9999px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .prog-title { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .prog-desc { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    .quote-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 2.5rem;
+    }
+    .quote-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: var(--primary);
+      line-height: 0.8;
+      margin-bottom: 0.5rem;
+    }
+    blockquote {
+      font-size: 1.3125rem;
+      line-height: 1.55;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .quote-cite {
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .values-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .value-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .value-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--primary);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+    .value-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.375rem; margin-bottom: 0.25rem; }
+    .value-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── SCHEDULE PREVIEW ── */
+    .schedule-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+    }
+
+    .day-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.25rem;
+    }
+    .day-tab {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.875rem;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .day-tab.active { background: var(--primary); color: var(--on-primary); }
+
+    .schedule-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .class-row {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .class-row:hover { border-color: var(--border-hover); background: var(--card-hi); }
+
+    .class-time { font-size: 0.8125rem; font-weight: 700; color: var(--text-muted); }
+    .class-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.375rem; }
+    .class-level {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+    }
+    .level-all { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+    .level-fund { background: rgba(59,130,246,0.12); color: var(--primary-dim); }
+    .level-adv { background: rgba(59,130,246,0.2); color: var(--primary); }
+    .level-kids { background: rgba(198,198,198,0.12); color: #c6c6c6; }
+
+    /* ── YOUTUBE SECTION ── */
+    .yt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      align-items: center;
+    }
+    .yt-embed {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--card);
+      border: 1px solid var(--border);
+      position: relative;
+      cursor: pointer;
+    }
+    .yt-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: radial-gradient(ellipse at center, #141820 0%, #0a0d14 100%);
+    }
+    .yt-play {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .yt-embed:hover .yt-play { transform: scale(1.1); opacity: 0.9; }
+    .yt-label { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
+
+    .yt-text { padding: 1rem; }
+    .yt-text .label { margin-bottom: 0.75rem; }
+    .yt-sub { font-size: 1.0625rem; color: var(--text-muted); line-height: 1.6; margin: 1rem 0 1.75rem; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+      border-radius: var(--radius-card);
+      padding: 3.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      right: -5%;
+      top: -20%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .cta-banner .headline-lg { color: #000; margin-bottom: 0.5rem; }
+    .cta-banner p { color: rgba(0,0,0,0.65); font-size: 1rem; }
+    .btn-dark {
+      background: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 0.875rem 2rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s, transform 0.12s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-dark:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem var(--gutter);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .nav-logo { display: block; margin-bottom: 0.75rem; text-decoration: none; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; max-width: 280px; }
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.875rem;
+    }
+    .footer-col a, .footer-col p {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      line-height: 2;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* ────────────────────────────────────────────
+       SCHEDULE PAGE
+    ──────────────────────────────────────────── */
+    .page-hero {
+      padding: 5rem var(--gutter) 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .schedule-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+    .sched-tab {
+      flex-shrink: 0;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .sched-tab:hover { border-color: var(--border-hover); color: var(--text); }
+    .sched-tab.active { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+
+    .full-schedule {
+      display: grid;
+      gap: 0.625rem;
+    }
+
+    .sched-header-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 1fr 1fr;
+      gap: 0.75rem;
+      padding: 0 1.5rem 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .sched-row {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.125rem 1.5rem;
+      display: grid;
+      grid-template-columns: 110px 1fr 1fr 1fr;
+      gap: 0.75rem;
+      align-items: center;
+      transition: border-color 0.15s;
+    }
+    .sched-row:hover { border-color: var(--border-hover); }
+    .sched-row.blue-accent { border-left: 3px solid var(--primary); }
+
+    .discipline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+    .discipline-badge.bjj { background: rgba(59,130,246,0.12); color: var(--primary-dim); }
+    .discipline-badge.muaythai { background: rgba(198,198,198,0.1); color: #c6c6c6; }
+    .discipline-badge.mma { background: rgba(59,130,246,0.2); color: var(--primary); }
+    .discipline-badge.kids { background: rgba(144,145,145,0.15); color: #c0c0c0; }
+    .discipline-badge.ajj { background: rgba(173,136,126,0.2); color: var(--outline); }
+
+    /* ────────────────────────────────────────────
+       MEMBER PORTAL PAGE
+    ──────────────────────────────────────────── */
+    .portal-hero {
+      text-align: center;
+      padding: 5rem var(--gutter) 2rem;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+    }
+
+    .portal-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .portal-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+
+    .portal-icon {
+      width: 64px; height: 64px;
+      border-radius: 1rem;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    .portal-card h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .portal-card p { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.5rem; }
+
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--gap);
+      margin-top: 2rem;
+    }
+
+    .belt-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 1.75rem;
+    }
+    .belt-stripe {
+      height: 4px;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+    .belt-white   { background: #e5e2e1; }
+    .belt-blue    { background: #3b82f6; }
+    .belt-purple  { background: #8b5cf6; }
+    .belt-brown   { background: #92400e; }
+    .belt-black   { background: #fff; }
+
+    .belt-card h4 { font-size: 1.375rem; margin-bottom: 0.375rem; }
+    .belt-card .belt-sub { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .technique-list { list-style: none; }
+    .technique-list li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding: 0.375rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .technique-list li:last-child { border-bottom: none; }
+    .technique-list li::before { content: '—'; color: var(--primary); font-weight: 700; }
+
+    /* ────────────────────────────────────────────
+       SURVEY PAGE
+    ──────────────────────────────────────────── */
+    .survey-container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem var(--gutter);
+    }
+
+    .survey-progress {
+      height: 3px;
+      background: var(--card-higher);
+      border-radius: 9999px;
+      margin-bottom: 3rem;
+      overflow: hidden;
+    }
+    .survey-progress-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+      width: 33%;
+    }
+
+    .survey-step { display: none; }
+    .survey-step.active { display: block; }
+
+    .survey-step h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .survey-step .step-sub { color: var(--text-muted); margin-bottom: 2rem; }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .option-item {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .option-item:hover { border-color: rgba(59,130,246,0.4); background: var(--card-hi); }
+    .option-item.selected { border-color: var(--primary); background: rgba(59,130,246,0.08); }
+
+    .option-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border-hover);
+      flex-shrink: 0;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .option-item.selected .option-check {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .option-item.selected .option-check::after {
+      content: '✓';
+      color: var(--on-primary);
+      font-size: 0.6875rem;
+      font-weight: 700;
+    }
+
+    .option-label { font-size: 0.9375rem; font-weight: 600; }
+
+    .survey-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .step-indicator {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .survey-complete {
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .survey-complete .checkmark {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.12);
+      border: 2px solid rgba(59,130,246,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ── UTILITY ── */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .mt-4 { margin-top: 2rem; }
+    .mt-6 { margin-top: 3rem; }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mb-4 { margin-bottom: 2rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      :root { --gutter: 2rem; }
+      .bento-12 { grid-template-columns: repeat(6, 1fr); }
+      .span-3  { grid-column: span 3; }
+      .span-4  { grid-column: span 3; }
+      .span-5  { grid-column: span 3; }
+      .span-7  { grid-column: span 6; }
+      .span-8  { grid-column: span 6; }
+      .hero-content { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .portal-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --gutter: 1.25rem; --gap: 1rem; }
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .yt-grid { grid-template-columns: 1fr; }
+      .curriculum-grid { grid-template-columns: 1fr; }
+      .portal-grid { grid-template-columns: 1fr; }
+      .option-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .class-row { grid-template-columns: 80px 1fr; }
+      .class-row .class-level { display: none; }
+      .sched-header-row { display: none; }
+      .sched-row { grid-template-columns: 80px 1fr; }
+      .sched-row > *:nth-child(3),
+      .sched-row > *:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────────────────────── NAV ──────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <img class="nav-logo-img" src="https://static.wixstatic.com/media/f6279d_95d0ee84cf9845219611e15356cc6ca9~mv2.jpeg/v1/fill/w_80,h_80,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/GrantsLogoSquare.jpeg" alt="Grant's Martial Arts logo" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Grant's</span>
+      <span class="nav-logo-sub">Martial Arts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('schedule')" id="nav-schedule">Schedule</a></li>
+    <li><a href="#" onclick="showPage('programs')" id="nav-programs">Programs</a></li>
+    <li><a href="#" onclick="showPage('instructors')" id="nav-instructors">Instructors</a></li>
+    <li><a href="#" onclick="showPage('portal')" id="nav-portal">Members</a></li>
+    <li><a href="#" onclick="showPage('survey')" id="nav-survey">Community</a></li>
+  </ul>
+  <a class="nav-cta" href="#" onclick="showPage('survey')">Book a Trial</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HOME PAGE
+═══════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="dot"></div>
+          <span class="label">Dartmouth, Nova Scotia · Est. 2012</span>
+        </div>
+        <h1 class="display hero-title">
+          OLD SCHOOL<br>GRIT MEETS<br><em>NEW SCHOOL</em><br>TECHNIQUE
+        </h1>
+        <p class="hero-sub">
+          World-class BJJ, Muay Thai, and MMA training in an ego-free environment. Whether you're stepping on the mat for the first time or competing at the highest level — this is where champions are built.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#" onclick="showPage('survey')">Book Free Trial →</a>
+          <a class="btn-secondary" href="#programs-section">Explore Programs</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">13+</div>
+          <div class="stat-label">Years Training</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Disciplines</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Days a Week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Ego-Free Zone</div>
+        </div>
+        <div class="hero-badge">
+          <span class="icon">📍</span>
+          <span>900 Windmill Rd, Unit 302 · Dartmouth, NS · <strong>(902) 471-7052</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs-section">
+    <div class="container">
+      <div class="mb-4">
+        <div class="label mb-1">What We Train</div>
+        <h2 class="headline-lg">Programs Built for<br>Every Level</h2>
+      </div>
+
+      <div class="programs-grid">
+        <!-- BJJ — large card -->
+        <div class="prog-card" style="grid-column: span 5;">
+          <div class="prog-icon">🥋</div>
+          <div class="prog-tag">Flagship Program</div>
+          <h3 class="prog-title">Brazilian Jiu Jitsu</h3>
+          <p class="prog-desc">From your first armbar to competition-level guard passes. Our BJJ curriculum covers fundamentals through advanced technique with structured belt progression and a coaching staff that trains alongside you.</p>
+          <div style="margin-top:1.25rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span class="class-level level-fund">Fundamentals</span>
+            <span class="class-level level-adv">Advanced</span>
+            <span class="class-level level-all">Open Mat</span>
+          </div>
+        </div>
+        <!-- Muay Thai -->
+        <div class="prog-card" style="grid-column: span 4;">
+          <div class="prog-icon">🥊</div>
+          <div class="prog-tag">Striking</div>
+          <h3 class="prog-title">Muay Thai</h3>
+          <p class="prog-desc">The art of eight limbs. Develop devastating striking combinations, clinch work, and the conditioning of a professional fighter. All levels welcome.</p>
+        </div>
+        <!-- Kids -->
+        <div class="prog-card" style="grid-column: span 3;">
+          <div class="prog-icon">⭐</div>
+          <div class="prog-tag">Youth</div>
+          <h3 class="prog-title">Kids Program</h3>
+          <p class="prog-desc">Building confidence, discipline, and respect through martial arts. Ages 5+.</p>
+        </div>
+        <!-- AJJ / Nogi -->
+        <div class="prog-card" style="grid-column: span 4;">
+          <div class="prog-icon">🤼</div>
+          <div class="prog-tag">No-Gi Grappling</div>
+          <h3 class="prog-title">AJJ & Nogi</h3>
+          <p class="prog-desc">Technical grappling without the gi. Heel hooks, leg locks, and submission wrestling refined for advanced practitioners and competitors.</p>
+        </div>
+        <!-- MMA -->
+        <div class="prog-card" style="grid-column: span 4;">
+          <div class="prog-icon">🏆</div>
+          <div class="prog-tag">Competition</div>
+          <h3 class="prog-title">Mixed Martial Arts</h3>
+          <p class="prog-desc">Full contact competition prep. Combining striking, wrestling, and grappling under one roof with coaches who have competed at the highest levels.</p>
+        </div>
+        <!-- CTA card -->
+        <div class="prog-card" style="grid-column: span 4; background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.25); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:1rem;">
+          <div class="prog-icon" style="margin-bottom:0;">🎯</div>
+          <h3 class="prog-title" style="color: var(--primary);">Not Sure<br>Where to Start?</h3>
+          <p class="prog-desc">Book a free trial class. Try any program, no commitment required.</p>
+          <a class="btn-primary" href="#" onclick="showPage('survey')" style="margin-top:0.5rem;">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section style="background: var(--surface); padding: 5rem 0;">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div>
+          <div class="label mb-2">Our Philosophy</div>
+          <h2 class="headline-lg mb-3">Where Grit Meets<br>Science</h2>
+          <div class="values-grid">
+            <div class="value-item">
+              <div class="value-num">01</div>
+              <div>
+                <div class="value-title">Discipline</div>
+                <p class="value-desc">Show up. Put in the work. Consistency beats talent every time. The mat doesn't lie.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-num">02</div>
+              <div>
+                <div class="value-title">Technical Mastery</div>
+                <p class="value-desc">We don't cut corners. Every technique is drilled until it's instinct, not thought.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-num">03</div>
+              <div>
+                <div class="value-title">Community</div>
+                <p class="value-desc">You're not just joining a gym. You're joining a family that pushes each other to be better every single day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-block">
+          <div class="quote-mark">"</div>
+          <blockquote>
+            We built this gym because we wanted a place where serious training meets genuine community. No egos, no politics — just hard work and mutual respect. Whether you're here to compete or just get in the best shape of your life, you belong on this mat.
+          </blockquote>
+          <div class="quote-cite">— Grant's Martial Arts Coaching Staff</div>
+          <div style="margin-top:1.75rem; padding-top:1.5rem; border-top: 1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; color:var(--primary);">Mon–Fri</div>
+              <div style="font-size:0.875rem; color:var(--text-muted);">12:00 PM – 9:00 PM</div>
+            </div>
+            <div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; color:var(--primary);">Saturday</div>
+              <div style="font-size:0.875rem; color:var(--text-muted);">10:00 AM – 2:00 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE PREVIEW -->
+  <section>
+    <div class="container">
+      <div class="schedule-header">
+        <div>
+          <div class="label mb-1">Weekly Schedule</div>
+          <h2 class="headline-lg">Find Your Class</h2>
+        </div>
+        <a class="btn-secondary" href="#" onclick="showPage('schedule')">Full Schedule →</a>
+      </div>
+
+      <div class="day-tabs mb-4" id="dayTabs">
+        <button class="day-tab active" onclick="switchDay(this,'mon')">Mon</button>
+        <button class="day-tab" onclick="switchDay(this,'tue')">Tue</button>
+        <button class="day-tab" onclick="switchDay(this,'wed')">Wed</button>
+        <button class="day-tab" onclick="switchDay(this,'thu')">Thu</button>
+        <button class="day-tab" onclick="switchDay(this,'fri')">Fri</button>
+        <button class="day-tab" onclick="switchDay(this,'sat')">Sat</button>
+      </div>
+
+      <div class="schedule-list" id="schedulePreview"></div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section style="background: var(--surface); padding: 5rem 0;">
+    <div class="container">
+      <div class="yt-grid">
+        <div class="yt-embed">
+          <div class="yt-placeholder">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; color:var(--text-muted); text-transform:uppercase;">Latest from the Mat</div>
+            <div class="yt-play">▶</div>
+            <div class="yt-label">@grantsmartialarts</div>
+          </div>
+        </div>
+        <div class="yt-text">
+          <div class="label mb-1">On YouTube</div>
+          <h2 class="headline-lg">Watch. Learn.<br>Train Smarter.</h2>
+          <p class="yt-sub">
+            Follow our channel for technique breakdowns, highlight reels from competition, and behind-the-scenes training footage. New content drops weekly — subscribe to stay sharp between classes.
+          </p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a class="btn-primary" href="https://youtube.com/@grantsmartialarts" target="_blank">Subscribe →</a>
+            <a class="btn-secondary" href="https://instagram.com/grantsmartialarts" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section>
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2 class="headline-lg">Ready to Step<br>on the Mat?</h2>
+          <p>First class is always free. No experience needed. Just show up.</p>
+        </div>
+        <a class="btn-dark" href="#" onclick="showPage('survey')">Book Your Free Trial Today →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#" onclick="showPage('home')">
+          <img class="nav-logo-img" src="https://static.wixstatic.com/media/f6279d_95d0ee84cf9845219611e15356cc6ca9~mv2.jpeg/v1/fill/w_80,h_80,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/GrantsLogoSquare.jpeg" alt="Grant's Martial Arts logo" />
+          <div class="nav-logo-text">
+            <span class="nav-logo-main">Grant's</span>
+            <span class="nav-logo-sub">Martial Arts</span>
+          </div>
+        </a>
+        <p>Old School Grit. New School Technique. Dartmouth's premier martial arts academy since 2012.</p>
+        <div style="margin-top:1rem; display:flex; gap:0.75rem;">
+          <a href="https://instagram.com/grantsmartialarts" target="_blank" style="color:var(--text-muted); font-size:0.875rem; text-decoration:none;">Instagram</a>
+          <a href="https://youtube.com/@grantsmartialarts" target="_blank" style="color:var(--text-muted); font-size:0.875rem; text-decoration:none;">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <a href="#" onclick="showPage('programs')">Brazilian Jiu Jitsu</a>
+        <a href="#" onclick="showPage('programs')">Muay Thai</a>
+        <a href="#" onclick="showPage('programs')">Kids Program</a>
+        <a href="#" onclick="showPage('programs')">AJJ & Nogi</a>
+        <a href="#" onclick="showPage('programs')">MMA</a>
+      </div>
+      <div class="footer-col">
+        <h4>Academy</h4>
+        <a href="#" onclick="showPage('schedule')">Schedule</a>
+        <a href="#" onclick="showPage('instructors')">Instructors</a>
+        <a href="#" onclick="showPage('portal')">Member Portal</a>
+        <a href="#">Pricing</a>
+        <a href="#">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>900 Windmill Rd, Unit 302</p>
+        <p>Dartmouth, NS</p>
+        <a href="tel:9024717052">(902) 471-7052</a>
+        <a href="mailto:info@grantsmartialarts.ca">info@grantsmartialarts.ca</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Grant's Martial Arts Academy. All rights reserved.</span>
+      <span style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:inherit;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:inherit;text-decoration:none;">Terms of Service</a>
+      </span>
+    </div>
+  </footer>
+
+</div><!-- /page-home -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SCHEDULE PAGE
+═══════════════════════════════════════════════════════ -->
+<div id="page-schedule" class="page">
+
+  <div class="page-hero">
+    <div class="label mb-1">Weekly Training</div>
+    <h1 class="display" style="margin-bottom:0.5rem;">Class Schedule</h1>
+    <p style="color:var(--text-muted); font-size:1.0625rem; max-width:540px;">Mon–Fri 12:00 PM–9:00 PM · Saturday 10:00 AM–2:00 PM · Closed Sunday</p>
+  </div>
+
+  <div class="container" style="padding-bottom:5rem;">
+
+    <!-- Free trial banner -->
+    <div style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.22); border-radius:1rem; padding:1.25rem 1.5rem; margin-bottom:2rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; justify-content:space-between;">
+      <div>
+        <div style="font-weight:700; font-size:0.9375rem;">New to Grant's?</div>
+        <div style="font-size:0.875rem; color:var(--text-muted);">Experience world-class coaching with a complimentary trial class — any program, any level.</div>
+      </div>
+      <a class="btn-primary" href="#" onclick="showPage('survey')">Book Free Trial</a>
+    </div>
+
+    <!-- Day filter tabs -->
+    <div class="schedule-tabs" id="schedPageTabs">
+      <button class="sched-tab active" onclick="switchSchedPage(this,'all')">All Days</button>
+      <button class="sched-tab" onclick="switchSchedPage(this,'mon')">Monday</button>
+      <button class="sched-tab" onclick="switchSchedPage(this,'tue')">Tuesday</button>
+      <button class="sched-tab" onclick="switchSchedPage(this,'wed')">Wednesday</button>
+      <button class="sched-tab" onclick="switchSchedPage(this,'thu')">Thursday</button>
+      <button class="sched-tab" onclick="switchSchedPage(this,'fri')">Friday</button>
+      <button class="sched-tab" onclick="switchSchedPage(this,'sat')">Saturday</button>
+    </div>
+
+    <!-- Discipline legend -->
+    <div style="display:flex; gap:0.625rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+      <span class="discipline-badge bjj">BJJ</span>
+      <span class="discipline-badge muaythai">Muay Thai</span>
+      <span class="discipline-badge mma">MMA</span>
+      <span class="discipline-badge ajj">AJJ / Nogi</span>
+      <span class="discipline-badge kids">Kids</span>
+    </div>
+
+    <div class="sched-header-row">
+      <span>Time</span>
+      <span>Class</span>
+      <span>Discipline</span>
+      <span>Level</span>
+    </div>
+
+    <div class="full-schedule" id="fullSchedule"></div>
+
+  </div>
+</div><!-- /page-schedule -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MEMBER PORTAL PAGE
+═══════════════════════════════════════════════════════ -->
+<div id="page-portal" class="page">
+
+  <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
+    <div class="portal-hero" style="padding:0 0 3rem;">
+      <div class="label mb-1">Exclusive Access</div>
+      <h1 class="display mb-2">Members Only</h1>
+      <p style="color:var(--text-muted); font-size:1.0625rem; max-width:520px; margin:0 auto;">This is where Old School Grit meets New School Technique. Your training hub — curriculum, shop, and community in one place.</p>
+    </div>
+
+    <div class="portal-grid mb-6">
+      <div class="portal-card">
+        <div class="portal-icon">🗒️</div>
+        <h3>Training Dashboard</h3>
+        <p>Manage your membership, track attendance, view invoices, and access your full curriculum through our Gymdesk portal.</p>
+        <a class="btn-primary" href="https://grants-martial-arts-academy.gymdesk.com/login" target="_blank" rel="noopener" style="width:100%; justify-content:center;">Login to Gymdesk →</a>
+      </div>
+      <div class="portal-card">
+        <div class="portal-icon">🛒</div>
+        <h3>Official Shop</h3>
+        <p>High-performance gear designed for the uncompromising athlete. From Gi to technical apparel, rep the brand that trains you.</p>
+        <a class="btn-secondary" href="#" style="width:100%; justify-content:center;">Browse Shop</a>
+      </div>
+      <div class="portal-card">
+        <div class="portal-icon">📅</div>
+        <h3>Book a Class</h3>
+        <p>Reserve your spot in any class in advance. Stay on schedule, track consistency, and never miss a session.</p>
+        <a class="btn-secondary" href="#" onclick="showPage('schedule')" style="width:100%; justify-content:center;">View Schedule</a>
+      </div>
+    </div>
+
+    <!-- Core values strip -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:3rem;">
+      <div style="text-align:center; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:1.25rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--primary); margin-bottom:0.25rem;">DISCIPLINE</div>
+        <p style="font-size:0.875rem; color:var(--text-muted);">Show up every day, no excuses.</p>
+      </div>
+      <div style="text-align:center; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:1.25rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--primary); margin-bottom:0.25rem;">FOCUS</div>
+        <p style="font-size:0.875rem; color:var(--text-muted);">Train with intention, not just effort.</p>
+      </div>
+      <div style="text-align:center; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:1.25rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--primary); margin-bottom:0.25rem;">GRIT</div>
+        <p style="font-size:0.875rem; color:var(--text-muted);">Embrace the grind. Grow through it.</p>
+      </div>
+    </div>
+
+    <!-- BJJ Curriculum -->
+    <div class="label mb-2">BJJ Belt Curriculum</div>
+    <h2 class="headline-md mb-3">Your Path to Black Belt</h2>
+
+    <div class="curriculum-grid">
+      <div class="belt-card">
+        <div class="belt-stripe belt-white"></div>
+        <h4>White Belt</h4>
+        <div class="belt-sub">Foundations · 0–12 months</div>
+        <ul class="technique-list">
+          <li>Positional control (mount, guard, side control)</li>
+          <li>Basic escapes: bridge-and-roll, elbow-knee</li>
+          <li>Rear naked choke, triangle, armbar</li>
+          <li>Guard passing fundamentals</li>
+          <li>Takedown defense</li>
+        </ul>
+      </div>
+      <div class="belt-card">
+        <div class="belt-stripe belt-blue"></div>
+        <h4>Blue Belt</h4>
+        <div class="belt-sub">Development · 1–2 years</div>
+        <ul class="technique-list">
+          <li>Open guard variations (De La Riva, spider)</li>
+          <li>Guard sweeps and combinations</li>
+          <li>Submission chains and setups</li>
+          <li>Positional dominance concepts</li>
+          <li>Drilling sequences</li>
+        </ul>
+      </div>
+      <div class="belt-card">
+        <div class="belt-stripe belt-purple"></div>
+        <h4>Purple Belt</h4>
+        <div class="belt-sub">Refinement · 2–4 years</div>
+        <ul class="technique-list">
+          <li>Advanced guard systems</li>
+          <li>Leg lock entries and defense</li>
+          <li>Competition strategy</li>
+          <li>Troubleshooting personal game</li>
+          <li>Beginning to teach fundamentals</li>
+        </ul>
+      </div>
+      <div class="belt-card">
+        <div class="belt-stripe belt-brown"></div>
+        <h4>Brown / Black Belt</h4>
+        <div class="belt-sub">Mastery · 4+ years</div>
+        <ul class="technique-list">
+          <li>Complete, well-rounded game</li>
+          <li>High-level competition or coaching track</li>
+          <li>Unique style and game development</li>
+          <li>Understanding of meta and principles</li>
+          <li>Leadership within the community</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /page-portal -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     COMMUNITY SURVEY PAGE
+═══════════════════════════════════════════════════════ -->
+<div id="page-survey" class="page">
+  <div class="survey-container">
+
+    <div class="label mb-2">Community Survey & Trial Booking</div>
+    <div class="survey-progress">
+      <div class="survey-progress-bar" id="surveyProgressBar"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="survey-step active" id="step1">
+      <h2>What Are You<br>Interested In?</h2>
+      <p class="step-sub">Select all disciplines that interest you.</p>
+      <div class="option-grid">
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">🥋 Brazilian Jiu Jitsu (BJJ)</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">🤼 AJJ / No-Gi Grappling</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">🥊 Muay Thai</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">🏆 Mixed Martial Arts</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">⭐ Kids Program</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">🤷 Not sure yet</span>
+        </div>
+      </div>
+      <div class="survey-nav">
+        <span class="step-indicator">Step 1 of 3</span>
+        <button class="btn-primary" onclick="goStep(2)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="survey-step" id="step2">
+      <h2>What Are Your<br>Training Goals?</h2>
+      <p class="step-sub">Pick the one that resonates most.</p>
+      <div class="option-grid">
+        <div class="option-item" onclick="selectSingle(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Competition / Pro-Level Training</span>
+        </div>
+        <div class="option-item" onclick="selectSingle(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Fitness & Weight Loss</span>
+        </div>
+        <div class="option-item" onclick="selectSingle(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Practical Self-Defense</span>
+        </div>
+        <div class="option-item" onclick="selectSingle(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Stress Relief & Fun</span>
+        </div>
+        <div class="option-item" onclick="selectSingle(this)">
+          <div class="option-check"></div>
+          <span class="option-label">My Kids' Development</span>
+        </div>
+        <div class="option-item" onclick="selectSingle(this)">
+          <div class="option-check"></div>
+          <span class="option-label">All of the Above</span>
+        </div>
+      </div>
+      <div class="survey-nav">
+        <button class="btn-secondary" onclick="goStep(1)">← Back</button>
+        <span class="step-indicator">Step 2 of 3</span>
+        <button class="btn-primary" onclick="goStep(3)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="survey-step" id="step3">
+      <h2>When Can You<br>Train?</h2>
+      <p class="step-sub">Select your preferred times.</p>
+      <div class="option-grid">
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Lunch (12 PM – 2 PM)</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Afternoon (2 PM – 5 PM)</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Evening (5 PM – 9 PM)</span>
+        </div>
+        <div class="option-item" onclick="toggleOption(this)">
+          <div class="option-check"></div>
+          <span class="option-label">Saturday Morning (10 AM – 2 PM)</span>
+        </div>
+      </div>
+
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:1rem; padding:1.25rem 1.5rem; margin-top:1rem;">
+        <div style="font-weight:700; font-size:0.9375rem; margin-bottom:0.5rem;">Your Contact Info</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+          <input type="text" placeholder="First Name" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
+          <input type="text" placeholder="Last Name" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
+          <input type="email" placeholder="Email Address" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s; grid-column:span 2;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
+        </div>
+      </div>
+
+      <div class="survey-nav" style="margin-top:1.5rem;">
+        <button class="btn-secondary" onclick="goStep(2)">← Back</button>
+        <span class="step-indicator">Step 3 of 3</span>
+        <button class="btn-primary" onclick="completeSurvey()">Book My Trial 🎯</button>
+      </div>
+    </div>
+
+    <!-- Complete -->
+    <div class="survey-step" id="stepComplete">
+      <div class="survey-complete">
+        <div class="checkmark">✓</div>
+        <h2 style="font-size:3rem; margin-bottom:0.5rem;">You're on the Mat.</h2>
+        <p style="color:var(--text-muted); font-size:1.0625rem; max-width:420px; margin:0 auto 2rem;">We'll reach out within 24 hours to confirm your free trial class. Check your inbox — this is just the beginning.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a class="btn-primary" href="#" onclick="showPage('schedule')">View Schedule →</a>
+          <a class="btn-secondary" href="#" onclick="showPage('home')">Back to Home</a>
+        </div>
+        <div style="margin-top:2rem; padding:1.25rem; background:var(--card); border:1px solid var(--border); border-radius:1rem; text-align:left; max-width:400px; margin-left:auto; margin-right:auto;">
+          <div style="font-size:0.8125rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:0.625rem;">What to bring</div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.375rem;">
+            <li style="font-size:0.9rem; color:var(--text-muted);">✓ Comfortable athletic wear</li>
+            <li style="font-size:0.9rem; color:var(--text-muted);">✓ Water bottle</li>
+            <li style="font-size:0.9rem; color:var(--text-muted);">✓ An open mind</li>
+            <li style="font-size:0.9rem; color:var(--text-muted);">✓ Leave the ego at the door 🥋</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /page-survey -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     INSTRUCTORS PAGE
+═══════════════════════════════════════════════════════ -->
+<div id="page-instructors" class="page">
+
+  <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
+    <div style="margin-bottom:3rem;">
+      <div class="label mb-1">The Team</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">Meet Your<br>Coaches</h1>
+      <p style="color:var(--text-muted); font-size:1.0625rem; max-width:560px; line-height:1.6;">World-class practitioners who've competed at the highest levels — and come back to share everything they know.</p>
+    </div>
+
+    <!-- Featured instructors (owners) -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-bottom:var(--gap);">
+
+      <!-- TJ Grant -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); overflow:hidden; display:grid; grid-template-columns:200px 1fr; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)'">
+        <div style="position:relative; overflow:hidden;">
+          <img src="https://static.wixstatic.com/media/f6279d_33e92e4f58f342a88513f18c8c222637~mv2.png" alt="TJ Grant" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          <div style="position:absolute; inset:0; background:linear-gradient(to right, transparent 70%, var(--card));"></div>
+        </div>
+        <div style="padding:2rem 1.75rem 2rem 1.5rem;">
+          <div style="display:inline-flex; align-items:center; gap:0.5rem; background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); border-radius:9999px; padding:0.25rem 0.75rem; font-size:0.6875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--primary-dim); margin-bottom:0.875rem;">⭐ Co-Owner</div>
+          <h2 style="font-family:'Bebas Neue',sans-serif; font-size:2.25rem; margin-bottom:0.25rem; line-height:1.05;">TJ Grant</h2>
+          <div style="font-size:0.8125rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1rem;">BJJ Black Belt · Muay Thai · MMA</div>
+          <p style="font-size:0.9375rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">Former UFC lightweight #1 contender with a professional MMA record of 21–5 (8–3 in the UFC). BJJ first-degree black belt with over 20 years of martial arts experience. Head coach of the kids program; teaches adults Tuesdays, Thursdays & Saturdays.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.625rem; border-radius:9999px; background:rgba(59,130,246,0.12); color:var(--primary-dim);">BJJ Black Belt</span>
+            <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.625rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">UFC Veteran</span>
+            <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.625rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">20+ Years</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alex MacDonald -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); overflow:hidden; display:grid; grid-template-columns:200px 1fr; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)'">
+        <div style="position:relative; overflow:hidden;">
+          <img src="https://static.wixstatic.com/media/f6279d_0e0692336fdf4aa785eb5c1dd4df4494~mv2.png" alt="Alex MacDonald" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          <div style="position:absolute; inset:0; background:linear-gradient(to right, transparent 70%, var(--card));"></div>
+        </div>
+        <div style="padding:2rem 1.75rem 2rem 1.5rem;">
+          <div style="display:inline-flex; align-items:center; gap:0.5rem; background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); border-radius:9999px; padding:0.25rem 0.75rem; font-size:0.6875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--primary-dim); margin-bottom:0.875rem;">⭐ Co-Owner</div>
+          <h2 style="font-family:'Bebas Neue',sans-serif; font-size:2.25rem; margin-bottom:0.25rem; line-height:1.05;">Alex MacDonald</h2>
+          <div style="font-size:0.8125rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1rem;">BJJ Black Belt</div>
+          <p style="font-size:0.9375rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">Black belt in Brazilian jiu-jitsu with a physics background that shapes his mechanical, principle-first approach to instruction. Training since 2012, teaching since 2014. Co-head coach of the kids program; teaches adults Mondays, Wednesdays & Thursdays.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.625rem; border-radius:9999px; background:rgba(59,130,246,0.12); color:var(--primary-dim);">BJJ Black Belt</span>
+            <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.625rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">Teaching Since 2014</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Supporting instructors grid -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap);">
+
+      <!-- Cameron Daniels -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); overflow:hidden; transition:border-color 0.2s, transform 0.2s; cursor:default;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)';this.style.transform='translateY(0)'">
+        <div style="height:240px; overflow:hidden; position:relative;">
+          <img src="https://static.wixstatic.com/media/f6279d_1ab6f48671be4cd58722bc975ffb5f8d~mv2.jpg" alt="Cameron Daniels" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, var(--card) 0%, transparent 50%);"></div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.75rem;">
+          <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">BJJ</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; margin-bottom:0.75rem; line-height:1.05;">Cameron Daniels</h3>
+          <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">BJJ black belt with international competition experience across BJJ, amateur Muay Thai, and MMA. Over a decade on the mat. Known for fun classes that don't let technical perfection slip.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(59,130,246,0.12); color:var(--primary-dim);">Black Belt</span>
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">Competitor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jacob Moses -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); overflow:hidden; transition:border-color 0.2s, transform 0.2s; cursor:default;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)';this.style.transform='translateY(0)'">
+        <div style="height:240px; overflow:hidden; position:relative;">
+          <img src="https://static.wixstatic.com/media/f6279d_5af234313ba049129e1615450bb15b72~mv2.jpg" alt="Jacob Moses" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, var(--card) 0%, transparent 50%);"></div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.75rem;">
+          <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">BJJ</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; margin-bottom:0.75rem; line-height:1.05;">Jacob Moses</h3>
+          <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">BJJ black belt celebrated for his creative guard and passing style. Builds classes around sequences from positions and understanding fundamental mechanics. Teaches Friday evenings.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(59,130,246,0.12); color:var(--primary-dim);">Black Belt</span>
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">Fri Evenings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dylan Benjamin -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); overflow:hidden; transition:border-color 0.2s, transform 0.2s; cursor:default;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)';this.style.transform='translateY(0)'">
+        <div style="height:240px; overflow:hidden; position:relative;">
+          <img src="https://static.wixstatic.com/media/f6279d_9dc6a4464c654626a4ae732ed2084b39~mv2.jpg" alt="Dylan Benjamin" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, var(--card) 0%, transparent 50%);"></div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.75rem;">
+          <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">Muay Thai</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; margin-bottom:0.75rem; line-height:1.05;">Dylan Benjamin</h3>
+          <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">Amateur Muay Thai kickboxer and MMA fighter. Classes range from cerebral to strenuous, hitting all the important aspects of a well-rounded Thai fighter. Teaches Wednesday & Friday evenings.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">Competitor</span>
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">Wed & Fri</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Piotr Urbanowski -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); overflow:hidden; transition:border-color 0.2s, transform 0.2s; cursor:default;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)';this.style.transform='translateY(-3px)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)';this.style.transform='translateY(0)'">
+        <div style="height:240px; overflow:hidden; position:relative;">
+          <img src="https://static.wixstatic.com/media/f6279d_1e8d2e1981634ae1bb25d76db19a4717~mv2.jpg" alt="Piotr Urbanowski" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, var(--card) 0%, transparent 50%);"></div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.75rem;">
+          <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">Muay Thai</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; margin-bottom:0.75rem; line-height:1.05;">Piotr Urbanowski</h3>
+          <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">Training Muay Thai since 2008 with Level 1 Certification from the Thai Boxing Association of Canada. Brings disciplined fundamentals and technical depth to every class. Teaches Monday evenings.</p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(59,130,246,0.12); color:var(--primary-dim);">TBA Certified</span>
+            <span style="font-size:0.6875rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:9999px; background:rgba(255,255,255,0.06); color:var(--text-muted);">Mon Evenings</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div style="margin-top:3rem;">
+      <div class="cta-banner">
+        <div>
+          <h2 class="headline-lg">Train With the Best.</h2>
+          <p>Book a free trial and get on the mat with our coaches.</p>
+        </div>
+        <a class="btn-dark" href="#" onclick="showPage('survey')">Book Your Free Trial →</a>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /page-instructors -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PROGRAMS / PRICING PAGE
+═══════════════════════════════════════════════════════ -->
+<div id="page-programs" class="page">
+  <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
+
+    <div style="margin-bottom:3.5rem;">
+      <div class="label mb-1">Memberships & Pricing</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">Programs &<br>Pricing</h1>
+      <p style="color:var(--text-muted); font-size:1.0625rem; max-width:560px; line-height:1.6;">No contracts required. Flexible plans for every lifestyle — commit more, pay less. All taxes extra unless noted.</p>
+    </div>
+
+    <!-- Billing toggle -->
+    <div style="display:flex; gap:0.5rem; background:var(--card); border:1px solid var(--border); border-radius:9999px; padding:0.25rem; width:fit-content; margin-bottom:2.5rem;" id="billingTabs">
+      <button class="sched-tab active" onclick="switchBilling(this,'monthly')" style="padding:0.5rem 1.25rem;">Monthly</button>
+      <button class="sched-tab" onclick="switchBilling(this,'6month')" style="padding:0.5rem 1.25rem;">6-Month</button>
+      <button class="sched-tab" onclick="switchBilling(this,'annual')" style="padding:0.5rem 1.25rem;">Annual</button>
+    </div>
+
+    <!-- Adult plans -->
+    <div style="margin-bottom:0.75rem; font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.06em; color:var(--primary);">Adult Memberships</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); margin-bottom:2rem;">
+
+      <!-- BJJ or MT -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); padding:2rem; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)'">
+        <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.625rem;">Single Discipline</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:2rem; margin-bottom:0.25rem;">BJJ or Muay Thai</h3>
+        <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.5;">Unlimited access to all classes in your chosen discipline.</p>
+        <div id="price-bjj-mt" style="margin-bottom:1.5rem;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--text); line-height:1;">$110</span>
+          <span style="color:var(--text-muted); font-size:0.9375rem;">/mo + tax</span>
+        </div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.625rem; margin-bottom:1.75rem;">
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> Unlimited classes in 1 discipline</li>
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> All skill levels welcome</li>
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> Open mat access</li>
+        </ul>
+        <a class="btn-secondary" href="#" onclick="showPage('survey')" style="width:100%; justify-content:center;">Book a Trial</a>
+      </div>
+
+      <!-- BJJ & MT -->
+      <div style="background:var(--card-hi); border:2px solid var(--primary); border-radius:var(--radius-card); padding:2rem; position:relative; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.7)'" onmouseleave="this.style.borderColor='var(--primary)'">
+        <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--primary); color:var(--on-primary); font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 1rem; border-radius:0 0 0.75rem 0.75rem; white-space:nowrap;">Most Popular</div>
+        <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.625rem; margin-top:0.5rem;">Full Access</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:2rem; margin-bottom:0.25rem;">BJJ & Muay Thai</h3>
+        <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.5;">Unlimited access to every class — the complete cross-training experience.</p>
+        <div id="price-bjj-mt-combo" style="margin-bottom:1.5rem;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--primary); line-height:1;">$130</span>
+          <span style="color:var(--text-muted); font-size:0.9375rem;">/mo + tax</span>
+        </div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.625rem; margin-bottom:1.75rem;">
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> Unlimited BJJ + Muay Thai classes</li>
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> MMA & AJJ / No-Gi access</li>
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> Open mat + all open sessions</li>
+          <li style="font-size:0.875rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary); font-weight:700; margin-top:1px;">✓</span> Best value for serious training</li>
+        </ul>
+        <a class="btn-primary" href="#" onclick="showPage('survey')" style="width:100%; justify-content:center;">Book a Trial</a>
+      </div>
+
+      <!-- Drop-in / Punch Pass -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); padding:2rem; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)'">
+        <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.625rem;">Flexible Options</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:2rem; margin-bottom:0.25rem;">Drop-In & Passes</h3>
+        <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.5;">No commitment. Perfect for visitors or trying before you commit.</p>
+        <div style="margin-bottom:1.5rem; display:flex; flex-direction:column; gap:0.875rem;">
+          <div style="background:var(--card-higher); border-radius:0.875rem; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.9375rem; font-weight:600;">Drop-In Class</span>
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text);">$25</span>
+          </div>
+          <div style="background:var(--card-higher); border-radius:0.875rem; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.9375rem; font-weight:600;">10-Class Punch Pass</span>
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text);">$185<span style="font-size:0.875rem; color:var(--text-muted); font-family:Inter,sans-serif; font-weight:400;"> +tax</span></span>
+          </div>
+          <div style="background:var(--card-higher); border-radius:0.875rem; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.9375rem; font-weight:600;">Private Lesson</span>
+            <span style="font-size:0.875rem; color:var(--text-muted);">By request</span>
+          </div>
+        </div>
+        <a class="btn-secondary" href="mailto:info@grantsmartialarts.ca" style="width:100%; justify-content:center;">Contact Us</a>
+      </div>
+
+    </div>
+
+    <!-- Junior & Kids -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-bottom:2rem;">
+
+      <!-- Junior -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); padding:2rem; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)'">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+          <div>
+            <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">Under 19</div>
+            <h3 style="font-family:'Bebas Neue',sans-serif; font-size:2rem; line-height:1.05;">Junior Membership</h3>
+          </div>
+          <div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); border-radius:0.75rem; padding:0.75rem 1rem; text-align:center;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; color:var(--primary); line-height:1;">15%</div>
+            <div style="font-size:0.6875rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em;">Off</div>
+          </div>
+        </div>
+        <p style="font-size:0.9375rem; color:var(--text-muted); line-height:1.6;">15% discount applied to any adult membership tier. Same unlimited access, same world-class coaching — just at a reduced rate for athletes under 19.</p>
+      </div>
+
+      <!-- Kids -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-card); padding:2rem; transition:border-color 0.2s;" onmouseenter="this.style.borderColor='rgba(99,150,255,0.28)'" onmouseleave="this.style.borderColor='rgba(99,150,255,0.1)'">
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">Ages 5+</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif; font-size:2rem; line-height:1.05; margin-bottom:0.5rem;">Kids Program</h3>
+          <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.55; margin-bottom:1.25rem;">Building confidence, focus, and respect through martial arts. Sibling discounts available.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.625rem;">
+          <div style="background:var(--card-higher); border-radius:0.875rem; padding:0.875rem; text-align:center;">
+            <div style="font-size:0.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); margin-bottom:0.375rem;">Monthly</div>
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text);">$80<span style="font-size:0.75rem; font-family:Inter,sans-serif; color:var(--text-muted);">/mo</span></div>
+          </div>
+          <div style="background:var(--card-higher); border-radius:0.875rem; padding:0.875rem; text-align:center;">
+            <div style="font-size:0.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); margin-bottom:0.375rem;">6-Month</div>
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text);">$420</div>
+          </div>
+          <div style="background:var(--card-higher); border-radius:0.875rem; padding:0.875rem; text-align:center;">
+            <div style="font-size:0.6875rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); margin-bottom:0.375rem;">Annual</div>
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text);">$720</div>
+          </div>
+        </div>
+        <div style="margin-top:0.625rem; font-size:0.8125rem; color:var(--text-muted);">Additional child: +$45/mo · +$240 (6mo) · +$420 (annual)</div>
+      </div>
+
+    </div>
+
+    <!-- Family rate banner -->
+    <div style="background:rgba(59,130,246,0.06); border:1px solid rgba(59,130,246,0.18); border-radius:var(--radius-card); padding:2rem; margin-bottom:3rem; display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:center;">
+      <div>
+        <div style="font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--primary); margin-bottom:0.375rem;">Immediate Family Only</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.75rem; margin-bottom:0.5rem;">Family Rate</h3>
+        <p style="font-size:0.9375rem; color:var(--text-muted); line-height:1.6; max-width:520px;">The whole family trains together. One household, one rate. Monthly: <strong style="color:var(--text);">$220</strong> · 6-Month: <strong style="color:var(--text);">$1,200</strong> · Annual: <strong style="color:var(--text);">$2,100</strong>. All + tax.</p>
+      </div>
+      <a class="btn-primary" href="mailto:info@grantsmartialarts.ca" style="white-space:nowrap;">Get in Touch</a>
+    </div>
+
+    <!-- Payment note -->
+    <div style="text-align:center; font-size:0.875rem; color:var(--text-muted); margin-bottom:3rem;">
+      Pay online, or in person via cash, debit, or credit. · Private lessons available by request.
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <div>
+        <h2 class="headline-lg">First Class is Free.</h2>
+        <p>Try any program, no commitment required.</p>
+      </div>
+      <a class="btn-dark" href="#" onclick="showPage('survey')">Book Your Free Trial →</a>
+    </div>
+
+  </div>
+</div><!-- /page-programs -->
+
+
+<script>
+  /* ── DATA ── */
+  const schedule = {
+    mon: [
+      { time: '12:00 PM', name: 'BJJ Fundamentals', discipline: 'bjj', level: 'fund' },
+      { time: '5:30 PM',  name: 'Kids BJJ',         discipline: 'kids', level: 'kids' },
+      { time: '6:30 PM',  name: 'Muay Thai',        discipline: 'muaythai', level: 'all' },
+      { time: '7:30 PM',  name: 'BJJ Advanced',     discipline: 'bjj', level: 'adv' },
+    ],
+    tue: [
+      { time: '12:00 PM', name: 'Open Mat',         discipline: 'bjj', level: 'all' },
+      { time: '5:30 PM',  name: 'Muay Thai Basics', discipline: 'muaythai', level: 'fund' },
+      { time: '6:30 PM',  name: 'MMA Conditioning', discipline: 'mma', level: 'adv' },
+      { time: '7:30 PM',  name: 'AJJ / No-Gi',      discipline: 'ajj', level: 'all' },
+    ],
+    wed: [
+      { time: '12:00 PM', name: 'BJJ Fundamentals', discipline: 'bjj', level: 'fund' },
+      { time: '5:30 PM',  name: 'Kids Muay Thai',   discipline: 'kids', level: 'kids' },
+      { time: '6:30 PM',  name: 'Muay Thai Power',  discipline: 'muaythai', level: 'adv' },
+      { time: '7:30 PM',  name: 'BJJ Drilling',     discipline: 'bjj', level: 'all' },
+    ],
+    thu: [
+      { time: '12:00 PM', name: 'Open Mat',         discipline: 'bjj', level: 'all' },
+      { time: '5:30 PM',  name: 'BJJ Fundamentals', discipline: 'bjj', level: 'fund' },
+      { time: '6:30 PM',  name: 'AJJ Leg Locks',    discipline: 'ajj', level: 'adv' },
+      { time: '7:30 PM',  name: 'MMA Sparring',     discipline: 'mma', level: 'adv' },
+    ],
+    fri: [
+      { time: '12:00 PM', name: 'BJJ Fundamentals', discipline: 'bjj', level: 'fund' },
+      { time: '5:30 PM',  name: 'Muay Thai',        discipline: 'muaythai', level: 'all' },
+      { time: '6:30 PM',  name: 'BJJ Advanced',     discipline: 'bjj', level: 'adv' },
+      { time: '7:30 PM',  name: 'No-Gi Grappling',  discipline: 'ajj', level: 'all' },
+    ],
+    sat: [
+      { time: '10:00 AM', name: 'BJJ Open Mat',     discipline: 'bjj', level: 'all' },
+      { time: '11:30 AM', name: 'Kids Program',     discipline: 'kids', level: 'kids' },
+      { time: '1:00 PM',  name: 'Muay Thai',        discipline: 'muaythai', level: 'all' },
+    ],
+  };
+
+  const levelLabel = { fund: 'Fundamentals', adv: 'Advanced', all: 'All Levels', kids: 'Kids' };
+  const levelClass = { fund: 'level-fund', adv: 'level-adv', all: 'level-all', kids: 'level-kids' };
+  const dayLabels  = { mon:'Monday', tue:'Tuesday', wed:'Wednesday', thu:'Thursday', fri:'Friday', sat:'Saturday' };
+
+  /* ── NAVIGATION ── */
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + id);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── SCHEDULE PREVIEW (HOME) ── */
+  let currentDay = 'mon';
+
+  function renderPreview(day) {
+    const el = document.getElementById('schedulePreview');
+    el.innerHTML = schedule[day].map(c => `
+      <div class="class-row">
+        <span class="class-time">${c.time}</span>
+        <span class="class-name">${c.name}</span>
+        <span class="class-level ${levelClass[c.level]}">${levelLabel[c.level]}</span>
+      </div>`).join('');
+  }
+
+  function switchDay(btn, day) {
+    document.querySelectorAll('#dayTabs .day-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDay = day;
+    renderPreview(day);
+  }
+
+  /* ── FULL SCHEDULE (SCHEDULE PAGE) ── */
+  let schedFilter = 'all';
+
+  function renderFullSchedule(filter) {
+    const el = document.getElementById('fullSchedule');
+    let html = '';
+    const days = filter === 'all' ? Object.keys(schedule) : [filter];
+    days.forEach(day => {
+      if (filter === 'all') {
+        html += `<div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.06em; margin:1.5rem 0 0.75rem; color:var(--primary);">${dayLabels[day]}</div>`;
+      }
+      schedule[day].forEach(c => {
+        html += `
+          <div class="sched-row ${c.discipline === 'bjj' ? 'blue-accent' : ''}">
+            <span class="class-time">${c.time}</span>
+            <span class="class-name">${c.name}</span>
+            <span class="discipline-badge ${c.discipline}">${c.discipline.toUpperCase()}</span>
+            <span class="class-level ${levelClass[c.level]}">${levelLabel[c.level]}</span>
+          </div>`;
+      });
+    });
+    el.innerHTML = html;
+  }
+
+  function switchSchedPage(btn, filter) {
+    document.querySelectorAll('#schedPageTabs .sched-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    schedFilter = filter;
+    renderFullSchedule(filter);
+  }
+
+  /* ── SURVEY ── */
+  let currentStep = 1;
+
+  function updateProgress() {
+    const pct = currentStep === 'complete' ? 100 : (currentStep / 3) * 100;
+    document.getElementById('surveyProgressBar').style.width = pct + '%';
+  }
+
+  function goStep(n) {
+    document.getElementById('step' + currentStep).classList.remove('active');
+    currentStep = n;
+    document.getElementById('step' + n).classList.add('active');
+    updateProgress();
+  }
+
+  function completeSurvey() {
+    document.getElementById('step' + currentStep).classList.remove('active');
+    document.getElementById('stepComplete').classList.add('active');
+    currentStep = 'complete';
+    updateProgress();
+  }
+
+  function toggleOption(el) {
+    el.classList.toggle('selected');
+  }
+
+  function selectSingle(el) {
+    el.closest('.option-grid').querySelectorAll('.option-item').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  /* ── BILLING TOGGLE ── */
+  const billingPrices = {
+    monthly: { single: '$110<span style="color:var(--text-muted);font-size:0.9375rem;">/mo + tax</span>', combo: '$130<span style="color:var(--text-muted);font-size:0.9375rem;">/mo + tax</span>' },
+    '6month': { single: '$600<span style="color:var(--text-muted);font-size:0.9375rem;"> + tax</span>', combo: '$720<span style="color:var(--text-muted);font-size:0.9375rem;"> + tax</span>' },
+    annual:   { single: '$1,080<span style="color:var(--text-muted);font-size:0.9375rem;"> + tax</span>', combo: '$1,320<span style="color:var(--text-muted);font-size:0.9375rem;"> + tax</span>' },
+  };
+
+  function switchBilling(btn, period) {
+    document.querySelectorAll('#billingTabs .sched-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const p = billingPrices[period];
+    document.getElementById('price-bjj-mt').innerHTML =
+      `<span style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--text);line-height:1;">${p.single}</span>`;
+    document.getElementById('price-bjj-mt-combo').innerHTML =
+      `<span style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--primary);line-height:1;">${p.combo}</span>`;
+  }
+
+  /* ── INIT ── */
+  renderPreview('mon');
+  renderFullSchedule('all');
+</script>
+
+</body>
+</html>
