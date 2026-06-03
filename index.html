@@ -1008,7 +1008,7 @@
       /* Nav */
       nav { padding: 0 1rem; gap: 0.75rem; }
       .nav-burger { display: flex; }
-      .nav-cta { font-size: 0.75rem; padding: 0.4rem 0.875rem; }
+      .nav-cta { display: none; }
       .nav-links { display: none; }
 
       /* Drawer */
@@ -1119,6 +1119,12 @@
       /* Day tabs wrap */
       .day-tabs { flex-wrap: wrap; }
       .schedule-tabs { flex-wrap: wrap; }
+
+      /* Survey buttons */
+      .survey-nav { flex-wrap: wrap; gap: 0.75rem; }
+      .survey-nav .btn-primary,
+      .survey-nav .btn-secondary { flex: 1; justify-content: center; min-width: 120px; text-align: center; }
+      .survey-name-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -1140,7 +1146,7 @@
     <li><a href="#" onclick="showPage('instructors'); closeMobileNav()" id="nav-instructors">Instructors</a></li>
     <li><a href="#" onclick="showPage('facility'); closeMobileNav()" id="nav-facility">Facility</a></li>
     <li><a href="#" onclick="showPage('portal'); closeMobileNav()" id="nav-portal">Members</a></li>
-    <li><a href="#" onclick="showPage('survey'); closeMobileNav()" id="nav-survey">Community</a></li>
+    <li><a href="#" onclick="showPage('survey'); closeMobileNav()" id="nav-survey">Book a Trial</a></li>
   </ul>
   <a class="nav-cta" href="#" onclick="showPage('survey'); closeMobileNav()">Book a Trial</a>
   <button class="nav-burger" id="navBurger" onclick="toggleMobileNav()" aria-label="Menu">
@@ -1167,7 +1173,7 @@
     <a href="#" onclick="showPage('instructors'); closeMobileNav()" id="drawer-instructors">Instructors</a>
     <a href="#" onclick="showPage('facility'); closeMobileNav()" id="drawer-facility">Facility</a>
     <a href="#" onclick="showPage('portal'); closeMobileNav()" id="drawer-portal">Members</a>
-    <a href="#" onclick="showPage('survey'); closeMobileNav()" id="drawer-survey">Community</a>
+    <a href="#" onclick="showPage('survey'); closeMobileNav()" id="drawer-survey">Book a Trial</a>
   </div>
   <div class="nav-drawer-footer">
     <a class="btn-primary" href="#" onclick="showPage('survey'); closeMobileNav()" style="width:100%; justify-content:center;">Book a Trial</a>
@@ -1237,9 +1243,9 @@
 
       <div class="programs-grid">
         <!-- BJJ — large card with photo -->
-        <div class="prog-card" onclick="showPage('prog-bjj')" style="cursor:pointer; grid-column: span 5; overflow:hidden; padding:0; display:flex; flex-direction:column;">
+        <div class="prog-card" onclick="showPage('prog-bjj')" style="cursor:pointer; grid-column: span 4; overflow:hidden; padding:0; display:flex; flex-direction:column;">
           <div style="height:200px; overflow:hidden; flex-shrink:0;">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycQjXj6W9IN9ZCleCBKSeUeEq0DHntpZ465wMZbG3bs6fXiNDCAtCCPxYbT-uZKwTqVhyGm4etsBfXOsnAc_LwOQJGz0S6x3of4wm99qtpG5pBACtVx8pmJoymsAT7VW26e1QPKrLuF94q1sXkglFssq2DtzdtE6ielS09bVDtH_aKKfJr9ioCU2jDo_rrj1X5WpSiDRHsOYktM5s6cTe_1KutakYf8n6TUCdJIPD7fKde4XCJIgn60tTKImUo3JqdXsQsc4ax_c" alt="BJJ class" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" class="prog-photo" />
+            <img src="https://static.wixstatic.com/media/f6279d_d9494b363c70452c9c100e498c34911c~mv2.jpg/v1/fill/w_680,h_460,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f6279d_d9494b363c70452c9c100e498c34911c~mv2.jpg" alt="BJJ class" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" class="prog-photo" />
           </div>
           <div style="padding:2rem; flex:1;">
             <div class="prog-tag">Flagship Program</div>
@@ -1255,7 +1261,7 @@
         <!-- Muay Thai with photo -->
         <div class="prog-card" onclick="showPage('prog-muaythai')" style="cursor:pointer; grid-column: span 4; overflow:hidden; padding:0; display:flex; flex-direction:column;">
           <div style="height:200px; overflow:hidden; flex-shrink:0;">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtYDVbRrI0oBz_SH2gCDBP3a0UNluVaD3pSTePh2Q4yoTLd2O4wa-HqixYe2NtYakdYi3OQkmziRDSbQaNEcqxYyyFlr44Z5xxtTE-06O05jSsAMagUe1jJujKHc2BOYYnp8dblgiQcbhVSonbcPy8QKAVAEsisJGP2uxOwk-lCcu8sDvN7WY1okTyDFfsteXuP98JIbLsk1dsqwUtcF06qFXvrkUWb8vMlGAuJW2BsgF2iF0E9_hYENY14u7R71tdm_om9gQqsbE" alt="Muay Thai" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
+            <img src="https://static.wixstatic.com/media/f6279d_d2dd55bade554320a4edc37185a96d49~mv2.jpg/v1/fill/w_680,h_460,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f6279d_d2dd55bade554320a4edc37185a96d49~mv2.jpg" alt="Muay Thai" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
           </div>
           <div style="padding:2rem; flex:1;">
             <div class="prog-tag">Striking</div>
@@ -1264,9 +1270,9 @@
           </div>
         </div>
         <!-- Kids with photo -->
-        <div class="prog-card" onclick="showPage('prog-kids')" style="cursor:pointer; grid-column: span 3; overflow:hidden; padding:0; display:flex; flex-direction:column;">
+        <div class="prog-card" onclick="showPage('prog-kids')" style="cursor:pointer; grid-column: span 4; overflow:hidden; padding:0; display:flex; flex-direction:column;">
           <div style="height:200px; overflow:hidden; flex-shrink:0;">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQfmy435PSef7Q8igvPz8p_aJmQ7uXKJuy9LEPXjU8d2W5k_QTVncqZSvXHuyZZ7CJo4cf6NGf_kTq2u7rqozQB5WTglWJ1tV2WNZDQzRf2Ug4ZTph57I8hyfWTYLlN7IL2o6BzahVmabNWwdaF7t3Se0Z-We-9M1b3xO1Lk-TZFPeXGtKbXN5NTMiDPghB4xXP8aZU87_IIkIwA-sUlEFSZELvxdrAIVXLzBdX2bW-dHYdebOTyHgMsMYpePQZcIj4wIPUVwmiPs" alt="Kids program" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
+            <img src="https://static.wixstatic.com/media/f6279d_608d6c633bd3443cb7599579b08f2f0f~mv2.png/v1/fill/w_680,h_460,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f6279d_608d6c633bd3443cb7599579b08f2f0f~mv2.png" alt="Kids program" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
           </div>
           <div style="padding:2rem; flex:1;">
             <div class="prog-tag">Youth</div>
@@ -1277,7 +1283,7 @@
         <!-- AJJ / Nogi with photo -->
         <div class="prog-card" onclick="showPage('prog-ajj')" style="cursor:pointer; grid-column: span 4; overflow:hidden; padding:0; display:flex; flex-direction:column;">
           <div style="height:180px; overflow:hidden; flex-shrink:0;">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8ulIFosx-G3fRbx9htOEQx1luPg3R_j_6u6wNh8hMi3ahy6IC3a3FmJs6lbBReLmF9RQkOVVf1Q318b0Xh0otVXhFoQLwL1lK3OJU7L5NrNs8303RK3oWUdp-VLqYh1ctf6cbpNZa6UIvASzRfYEzfjNZRa0ArDErbeQ-adKHCnJLVdkJUhTYaSL2nOMxqPPHF0stxDtwLH3Hh9vel_zp7rBTDJ8GTY8e3TUmQnp2v5CRU9GchtCEQSVH6UwXkDjGJD7KJeqg6k" alt="AJJ Nogi grappling" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
+            <img src="https://static.wixstatic.com/media/f6279d_96cf72b828d84e84a9b3398f78268d45~mv2.jpg/v1/fill/w_680,h_460,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f6279d_96cf72b828d84e84a9b3398f78268d45~mv2.jpg" alt="AJJ Nogi grappling" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
           </div>
           <div style="padding:2rem; flex:1;">
             <div class="prog-tag">No-Gi Grappling</div>
@@ -1288,7 +1294,7 @@
         <!-- MMA with photo -->
         <div class="prog-card" onclick="showPage('prog-mma')" style="cursor:pointer; grid-column: span 4; overflow:hidden; padding:0; display:flex; flex-direction:column;">
           <div style="height:180px; overflow:hidden; flex-shrink:0;">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF81WuwYS3JdpSvL8lT1FLWSaI6RQM312BmWgfxzNrWaPLh80XYC861Bsbr66eg0bMFLE3yaYZ5FCBx6ONa0uijr4O3rSGN3w2fiVG_88bouWL9Z4TTS4jMHRcj6sfq9Kezp9OUR7mDg5KQoef_XGmTjAFLtFjWmETbr637OZJAnCnyGQW2xQkwGBaYEpxfMBLQPQMak-RRWlLT7f_Bof5fGNDRYl1GhwDfw79_n6Y-pxJ4qmz4a8hVzZHYy7bMrm9tnrILOhTuk" alt="MMA training" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
+            <img src="https://static.wixstatic.com/media/f6279d_17b8b0fcd51f4f43a193287f4e4e7f58~mv2.jpg/v1/fill/w_680,h_460,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f6279d_17b8b0fcd51f4f43a193287f4e4e7f58~mv2.jpg" alt="MMA training" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.7;transition:opacity 0.4s,filter 0.4s;" />
           </div>
           <div style="padding:2rem; flex:1;">
             <div class="prog-tag">Competition</div>
@@ -1596,7 +1602,7 @@
     </div>
 
     <!-- Core values strip -->
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:3rem;">
+    <div class="col-3-to-1" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:3rem;">
       <div style="text-align:center; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:1.25rem;">
         <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--primary); margin-bottom:0.25rem;">DISCIPLINE</div>
         <p style="font-size:0.875rem; color:var(--text-muted);">Show up every day, no excuses.</p>
@@ -1726,7 +1732,7 @@
 
       <div style="background:var(--card); border:1px solid var(--border); border-radius:1rem; padding:1.25rem 1.5rem; margin-top:1rem;">
         <div style="font-weight:700; font-size:0.9375rem; margin-bottom:0.5rem;">Your Contact Info</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+        <div class="survey-name-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
           <input type="text" placeholder="First Name" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
           <input type="text" placeholder="Last Name" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
           <input type="email" placeholder="Email Address" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s; grid-column:span 2;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
@@ -2638,7 +2644,7 @@
   <div class="container" style="padding-top:5rem;padding-bottom:5rem;">
 
     <!-- MATS SECTION -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:5rem;">
+    <div class="col-2-to-1" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:5rem;">
       <div>
         <div style="height:440px;border-radius:var(--radius-card);overflow:hidden;">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycQjXj6W9IN9ZCleCBKSeUeEq0DHntpZ465wMZbG3bs6fXiNDCAtCCPxYbT-uZKwTqVhyGm4etsBfXOsnAc_LwOQJGz0S6x3of4wm99qtpG5pBACtVx8pmJoymsAT7VW26e1QPKrLuF94q1sXkglFssq2DtzdtE6ielS09bVDtH_aKKfJr9ioCU2jDo_rrj1X5WpSiDRHsOYktM5s6cTe_1KutakYf8n6TUCdJIPD7fKde4XCJIgn60tTKImUo3JqdXsQsc4ax_c" alt="Training mats" style="width:100%;height:100%;object-fit:cover;filter:grayscale(0.3);" />
@@ -2673,7 +2679,7 @@
 
     <!-- WHY MATS MATTER CALLOUT -->
     <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:var(--radius-card);padding:2.5rem;margin-bottom:5rem;">
-      <div style="display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;align-items:center;">
+      <div class="col-2-to-1" style="display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;align-items:center;">
         <div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--primary);line-height:1.05;">Why Mat Quality Matters</div>
         </div>
@@ -2686,7 +2692,7 @@
 
     <!-- MUAY THAI EQUIPMENT SECTION -->
     <div style="margin-bottom:5rem;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+      <div class="col-2-to-1" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
         <div>
           <div class="label mb-2">Striking Zone</div>
           <h2 class="headline-lg mb-3">Muay Thai Equipment.<br>No Compromises.</h2>
@@ -2741,7 +2747,7 @@
 
     <!-- CHANGEROOMS & SHOWERS -->
     <div style="background:var(--surface);border-radius:var(--radius-card);padding:3rem;margin-bottom:5rem;border:1px solid var(--border);">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+      <div class="col-2-to-1" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
         <div>
           <div class="label mb-2">After Training</div>
           <h2 class="headline-lg mb-3">Dual Private<br>Showers.</h2>
