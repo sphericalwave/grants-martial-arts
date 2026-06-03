@@ -71,12 +71,9 @@
     .nav-logo-img {
       width: 38px;
       height: 38px;
-      border-radius: 6px;
+      border-radius: 8px;
       display: block;
       flex-shrink: 0;
-      /* remove white JPEG background on dark surface */
-      mix-blend-mode: screen;
-      filter: invert(1) hue-rotate(180deg);
     }
     .nav-logo-text {
       display: flex;
@@ -1085,7 +1082,7 @@
 
       <div class="programs-grid">
         <!-- BJJ — large card with photo -->
-        <div class="prog-card" style="grid-column: span 5; position:relative; overflow:hidden; min-height:320px; padding:0;">
+        <div class="prog-card" onclick="showPage('prog-bjj')" style="cursor:pointer; grid-column: span 5; position:relative; overflow:hidden; min-height:320px; padding:0;">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycQjXj6W9IN9ZCleCBKSeUeEq0DHntpZ465wMZbG3bs6fXiNDCAtCCPxYbT-uZKwTqVhyGm4etsBfXOsnAc_LwOQJGz0S6x3of4wm99qtpG5pBACtVx8pmJoymsAT7VW26e1QPKrLuF94q1sXkglFssq2DtzdtE6ielS09bVDtH_aKKfJr9ioCU2jDo_rrj1X5WpSiDRHsOYktM5s6cTe_1KutakYf8n6TUCdJIPD7fKde4XCJIgn60tTKImUo3JqdXsQsc4ax_c" alt="BJJ class" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" class="prog-photo" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
           <div style="position:relative;z-index:2;padding:2rem;">
@@ -1100,7 +1097,7 @@
           </div>
         </div>
         <!-- Muay Thai with photo -->
-        <div class="prog-card" style="grid-column: span 4; position:relative; overflow:hidden; min-height:320px; padding:0;">
+        <div class="prog-card" onclick="showPage('prog-muaythai')" style="cursor:pointer; grid-column: span 4; position:relative; overflow:hidden; min-height:320px; padding:0;">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtYDVbRrI0oBz_SH2gCDBP3a0UNluVaD3pSTePh2Q4yoTLd2O4wa-HqixYe2NtYakdYi3OQkmziRDSbQaNEcqxYyyFlr44Z5xxtTE-06O05jSsAMagUe1jJujKHc2BOYYnp8dblgiQcbhVSonbcPy8QKAVAEsisJGP2uxOwk-lCcu8sDvN7WY1okTyDFfsteXuP98JIbLsk1dsqwUtcF06qFXvrkUWb8vMlGAuJW2BsgF2iF0E9_hYENY14u7R71tdm_om9gQqsbE" alt="Muay Thai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
           <div style="position:relative;z-index:2;padding:2rem;">
@@ -1110,7 +1107,7 @@
           </div>
         </div>
         <!-- Kids with photo -->
-        <div class="prog-card" style="grid-column: span 3; position:relative; overflow:hidden; min-height:320px; padding:0;">
+        <div class="prog-card" onclick="showPage('prog-kids')" style="cursor:pointer; grid-column: span 3; position:relative; overflow:hidden; min-height:320px; padding:0;">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQfmy435PSef7Q8igvPz8p_aJmQ7uXKJuy9LEPXjU8d2W5k_QTVncqZSvXHuyZZ7CJo4cf6NGf_kTq2u7rqozQB5WTglWJ1tV2WNZDQzRf2Ug4ZTph57I8hyfWTYLlN7IL2o6BzahVmabNWwdaF7t3Se0Z-We-9M1b3xO1Lk-TZFPeXGtKbXN5NTMiDPghB4xXP8aZU87_IIkIwA-sUlEFSZELvxdrAIVXLzBdX2bW-dHYdebOTyHgMsMYpePQZcIj4wIPUVwmiPs" alt="Kids program" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
           <div style="position:relative;z-index:2;padding:2rem;">
@@ -1120,7 +1117,7 @@
           </div>
         </div>
         <!-- AJJ / Nogi with photo -->
-        <div class="prog-card" style="grid-column: span 4; position:relative; overflow:hidden; min-height:280px; padding:0;">
+        <div class="prog-card" onclick="showPage('prog-ajj')" style="cursor:pointer; grid-column: span 4; position:relative; overflow:hidden; min-height:280px; padding:0;">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8ulIFosx-G3fRbx9htOEQx1luPg3R_j_6u6wNh8hMi3ahy6IC3a3FmJs6lbBReLmF9RQkOVVf1Q318b0Xh0otVXhFoQLwL1lK3OJU7L5NrNs8303RK3oWUdp-VLqYh1ctf6cbpNZa6UIvASzRfYEzfjNZRa0ArDErbeQ-adKHCnJLVdkJUhTYaSL2nOMxqPPHF0stxDtwLH3Hh9vel_zp7rBTDJ8GTY8e3TUmQnp2v5CRU9GchtCEQSVH6UwXkDjGJD7KJeqg6k" alt="AJJ Nogi grappling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
           <div style="position:relative;z-index:2;padding:2rem;">
@@ -1130,7 +1127,7 @@
           </div>
         </div>
         <!-- MMA with photo -->
-        <div class="prog-card" style="grid-column: span 4; position:relative; overflow:hidden; min-height:280px; padding:0;">
+        <div class="prog-card" onclick="showPage('prog-mma')" style="cursor:pointer; grid-column: span 4; position:relative; overflow:hidden; min-height:280px; padding:0;">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF81WuwYS3JdpSvL8lT1FLWSaI6RQM312BmWgfxzNrWaPLh80XYC861Bsbr66eg0bMFLE3yaYZ5FCBx6ONa0uijr4O3rSGN3w2fiVG_88bouWL9Z4TTS4jMHRcj6sfq9Kezp9OUR7mDg5KQoef_XGmTjAFLtFjWmETbr637OZJAnCnyGQW2xQkwGBaYEpxfMBLQPQMak-RRWlLT7f_Bof5fGNDRYl1GhwDfw79_n6Y-pxJ4qmz4a8hVzZHYy7bMrm9tnrILOhTuk" alt="MMA training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
           <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
           <div style="position:relative;z-index:2;padding:2rem;">
@@ -1230,14 +1227,14 @@
   <section style="background: var(--surface); padding: 5rem 0;">
     <div class="container">
       <div class="yt-grid">
-        <div class="yt-embed" style="position:relative;">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQYDs3MYgEbiQCTvj2ccUYMrjgJtwcmClBXIIpPz3GCc11ImxPdxlpZIq0k6HWvxWA6AmT8HUFQXkkIaRlK6LEUodSmua-yEJEeklWCbLukb-iGogTBVIBzzQtk42YsOx2xyiY0pVN7_JEniJ0sAwLNDsPInrd5eiCJLzvPH4k2r3kooKJD1wsxzt0ma0O5_RvMQz2pC9K27YtOeP2dcZXt8upAcUgdfxLxG82cl7IQ4Np1Hvp2DYorz1ck6fMkrT5nv2ZwCUEffE" alt="Grant's Martial Arts training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.6);" />
-          <div style="position:absolute;inset:0;background:rgba(10,13,20,0.55);"></div>
-          <div class="yt-placeholder" style="position:relative;z-index:2;">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; color:var(--text-muted); text-transform:uppercase;">Latest from the Mat</div>
-            <a href="https://youtube.com/@grantsmartialarts" target="_blank" rel="noopener" style="text-decoration:none;"><div class="yt-play">▶</div></a>
-            <div class="yt-label">@grantsmartialarts</div>
-          </div>
+        <div class="yt-embed">
+          <iframe
+            src="https://www.youtube.com/embed?listType=user_uploads&list=GrantsMartialArtsAcademy&rel=0&modestbranding=1"
+            title="Grant's Martial Arts — Latest Videos"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:var(--radius-card);"
+          ></iframe>
         </div>
         <div class="yt-text">
           <div class="label mb-1">On YouTube</div>
@@ -1306,11 +1303,11 @@
       </div>
       <div class="footer-col">
         <h4>Programs</h4>
-        <a href="#" onclick="showPage('programs')">Brazilian Jiu Jitsu</a>
-        <a href="#" onclick="showPage('programs')">Muay Thai</a>
-        <a href="#" onclick="showPage('programs')">Kids Program</a>
-        <a href="#" onclick="showPage('programs')">AJJ & Nogi</a>
-        <a href="#" onclick="showPage('programs')">MMA</a>
+        <a href="#" onclick="showPage('prog-bjj')">Brazilian Jiu Jitsu</a>
+        <a href="#" onclick="showPage('prog-muaythai')">Muay Thai</a>
+        <a href="#" onclick="showPage('prog-kids')">Kids Program</a>
+        <a href="#" onclick="showPage('prog-ajj')">AJJ & Nogi</a>
+        <a href="#" onclick="showPage('prog-mma')">MMA</a>
       </div>
       <div class="footer-col">
         <h4>Academy</h4>
@@ -1424,7 +1421,7 @@
         <div class="portal-icon">🛒</div>
         <h3>Official Shop</h3>
         <p>High-performance gear designed for the uncompromising athlete. From Gi to technical apparel, rep the brand that trains you.</p>
-        <a class="btn-secondary" href="#" style="width:100%; justify-content:center;">Browse Shop</a>
+        <a class="btn-secondary" href="https://grants-martial-arts-academy.gymdesk.com/shop" target="_blank" rel="noopener" style="width:100%; justify-content:center;">Browse Shop →</a>
       </div>
       <div class="portal-card">
         <div class="portal-icon">📅</div>
@@ -1953,6 +1950,224 @@
 
   </div>
 </div><!-- /page-programs -->
+
+
+<!-- ═══ PROGRAM: BJJ ═══ -->
+<div id="page-prog-bjj" class="page">
+  <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden; margin-bottom:0;">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycQjXj6W9IN9ZCleCBKSeUeEq0DHntpZ465wMZbG3bs6fXiNDCAtCCPxYbT-uZKwTqVhyGm4etsBfXOsnAc_LwOQJGz0S6x3of4wm99qtpG5pBACtVx8pmJoymsAT7VW26e1QPKrLuF94q1sXkglFssq2DtzdtE6ielS09bVDtH_aKKfJr9ioCU2jDo_rrj1X5WpSiDRHsOYktM5s6cTe_1KutakYf8n6TUCdJIPD7fKde4XCJIgn60tTKImUo3JqdXsQsc4ax_c" alt="BJJ class" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
+    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+      <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
+      <div class="label mb-1">Grappling</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">Brazilian<br>Jiu Jitsu</h1>
+      <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">The foundation of everything we do. Whether you're day one white belt or a seasoned competitor, BJJ at Grant's is structured, technical, and ego-free.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h2 class="headline-md mb-3">What to Expect</h2>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Our BJJ program runs classes six days a week across all skill levels. Fundamentals classes focus on core positions, escapes, and submissions — taught in a structured, drill-heavy format designed so beginners thrive and experienced practitioners sharpen their foundations.</p>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Advanced classes assume a working knowledge of the basics and cover competition strategies, advanced guard systems, and live positional sparring. Open mat sessions give you unstructured time to flow with training partners at your own pace.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Belt promotions are earned — not bought. Progress is recognised when you're ready, guided by our black belt coaching staff led by Alex MacDonald and TJ Grant.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn-primary" href="#" onclick="showPage('survey')">Book a Free Trial →</a>
+          <a class="btn-secondary" href="#" onclick="showPage('schedule')">View Schedule</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;">
+          <div class="label mb-2">Class Levels</div>
+          <div style="display:flex;flex-direction:column;gap:0.625rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;"><span class="class-level level-fund">Fundamentals</span><span style="font-size:0.875rem;color:var(--text-muted);">All welcome</span></div>
+            <div style="display:flex;align-items:center;gap:0.75rem;"><span class="class-level level-adv">Advanced</span><span style="font-size:0.875rem;color:var(--text-muted);">6+ months</span></div>
+            <div style="display:flex;align-items:center;gap:0.75rem;"><span class="class-level level-all">Open Mat</span><span style="font-size:0.875rem;color:var(--text-muted);">Drop-in</span></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;">
+          <div class="label mb-2">Head Coaches</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.9375rem;font-weight:600;">Alex MacDonald <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">BJJ Black Belt</span></div>
+            <div style="font-size:0.9375rem;font-weight:600;">TJ Grant <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">BJJ Black Belt</span></div>
+            <div style="font-size:0.9375rem;font-weight:600;">Cameron Daniels <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">BJJ Black Belt</span></div>
+            <div style="font-size:0.9375rem;font-weight:600;">Jacob Moses <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">BJJ Black Belt</span></div>
+          </div>
+        </div>
+        <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:1.25rem;padding:1.5rem;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--primary);margin-bottom:0.25rem;">$110/mo</div>
+          <div style="font-size:0.8125rem;color:var(--text-muted);">BJJ membership · or from $600 for 6 months</div>
+          <a class="btn-primary" href="#" onclick="showPage('programs')" style="margin-top:1rem;width:100%;justify-content:center;">See All Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-prog-bjj -->
+
+<!-- ═══ PROGRAM: MUAY THAI ═══ -->
+<div id="page-prog-muaythai" class="page">
+  <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtYDVbRrI0oBz_SH2gCDBP3a0UNluVaD3pSTePh2Q4yoTLd2O4wa-HqixYe2NtYakdYi3OQkmziRDSbQaNEcqxYyyFlr44Z5xxtTE-06O05jSsAMagUe1jJujKHc2BOYYnp8dblgiQcbhVSonbcPy8QKAVAEsisJGP2uxOwk-lCcu8sDvN7WY1okTyDFfsteXuP98JIbLsk1dsqwUtcF06qFXvrkUWb8vMlGAuJW2BsgF2iF0E9_hYENY14u7R71tdm_om9gQqsbE" alt="Muay Thai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
+    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+      <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
+      <div class="label mb-1">Striking</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">Muay Thai</h1>
+      <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">The art of eight limbs. Punches, kicks, elbows, knees, and clinch — trained by competitors who've fought at the highest amateur level.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h2 class="headline-md mb-3">What to Expect</h2>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Muay Thai at Grant's is technical-first. Classes are structured around proper form, timing, and combinations before power. You'll develop real striking skill whether your goal is fitness, self-defence, or stepping in the ring.</p>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Beginner classes cover stance, guard, basic strikes, and footwork. Intermediate and advanced sessions focus on combinations, clinch work, pad rounds, and controlled sparring.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">No experience needed to start. Hand wraps required — available for purchase at the gym.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn-primary" href="#" onclick="showPage('survey')">Book a Free Trial →</a>
+          <a class="btn-secondary" href="#" onclick="showPage('schedule')">View Schedule</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;">
+          <div class="label mb-2">Coaches</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.9375rem;font-weight:600;">Dylan Benjamin <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">Wed & Fri</span></div>
+            <div style="font-size:0.9375rem;font-weight:600;">Piotr Urbanowski <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">Mon Evenings</span></div>
+            <div style="font-size:0.9375rem;font-weight:600;">TJ Grant <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">Guest sessions</span></div>
+          </div>
+        </div>
+        <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:1.25rem;padding:1.5rem;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--primary);margin-bottom:0.25rem;">$110/mo</div>
+          <div style="font-size:0.8125rem;color:var(--text-muted);">Muay Thai membership · or $130/mo for BJJ + MT</div>
+          <a class="btn-primary" href="#" onclick="showPage('programs')" style="margin-top:1rem;width:100%;justify-content:center;">See All Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-prog-muaythai -->
+
+<!-- ═══ PROGRAM: KIDS ═══ -->
+<div id="page-prog-kids" class="page">
+  <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQfmy435PSef7Q8igvPz8p_aJmQ7uXKJuy9LEPXjU8d2W5k_QTVncqZSvXHuyZZ7CJo4cf6NGf_kTq2u7rqozQB5WTglWJ1tV2WNZDQzRf2Ug4ZTph57I8hyfWTYLlN7IL2o6BzahVmabNWwdaF7t3Se0Z-We-9M1b3xO1Lk-TZFPeXGtKbXN5NTMiDPghB4xXP8aZU87_IIkIwA-sUlEFSZELvxdrAIVXLzBdX2bW-dHYdebOTyHgMsMYpePQZcIj4wIPUVwmiPs" alt="Kids program" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.4);"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
+    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+      <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
+      <div class="label mb-1">Youth · Ages 5+</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">Kids<br>Program</h1>
+      <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">More than martial arts. Kids learn discipline, respect, and confidence in a structured, fun, and safe environment led by TJ Grant and Alex MacDonald.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h2 class="headline-md mb-3">What to Expect</h2>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">The kids program is designed to meet children where they are and grow with them. Classes cover foundational BJJ and movement skills, but the emphasis is always on character — showing up, trying hard, respecting classmates, and having fun.</p>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Our coaches have extensive experience working with youth athletes and understand how to hold attention, build confidence in shy kids, and keep the energy positive for everyone.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Sibling discounts available. No martial arts experience required — just a willingness to learn and move.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn-primary" href="#" onclick="showPage('survey')">Book a Free Trial →</a>
+          <a class="btn-secondary" href="#" onclick="showPage('programs')">See Pricing</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;">
+          <div class="label mb-2">Head Coaches</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.9375rem;font-weight:600;">TJ Grant</div>
+            <div style="font-size:0.9375rem;font-weight:600;">Alex MacDonald</div>
+          </div>
+        </div>
+        <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:1.25rem;padding:1.5rem;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--primary);margin-bottom:0.25rem;">$80/mo</div>
+          <div style="font-size:0.8125rem;color:var(--text-muted);">Kids membership · sibling discount available</div>
+          <a class="btn-primary" href="#" onclick="showPage('programs')" style="margin-top:1rem;width:100%;justify-content:center;">See All Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-prog-kids -->
+
+<!-- ═══ PROGRAM: AJJ / NOGI ═══ -->
+<div id="page-prog-ajj" class="page">
+  <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8ulIFosx-G3fRbx9htOEQx1luPg3R_j_6u6wNh8hMi3ahy6IC3a3FmJs6lbBReLmF9RQkOVVf1Q318b0Xh0otVXhFoQLwL1lK3OJU7L5NrNs8303RK3oWUdp-VLqYh1ctf6cbpNZa6UIvASzRfYEzfjNZRa0ArDErbeQ-adKHCnJLVdkJUhTYaSL2nOMxqPPHF0stxDtwLH3Hh9vel_zp7rBTDJ8GTY8e3TUmQnp2v5CRU9GchtCEQSVH6UwXkDjGJD7KJeqg6k" alt="AJJ Nogi grappling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
+    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+      <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
+      <div class="label mb-1">No-Gi Grappling</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">AJJ &<br>No-Gi</h1>
+      <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">Submission wrestling without the gi. Heel hooks, leg locks, and tight scrambles — the cutting edge of modern grappling taught by black belts who compete in it.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h2 class="headline-md mb-3">What to Expect</h2>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">American Jiu Jitsu (AJJ) and No-Gi grappling at Grant's covers the full modern submission wrestling ruleset — including leg entanglements, heel hooks, and the reaping positions that are central to today's competition meta.</p>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Classes focus on building sequences from position, understanding when to attack vs. defend, and developing the mechanical clarity to apply technique under pressure. Jacob Moses teaches Friday evenings with an emphasis on creative guard play and passing chains.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Recommended for athletes with at least some grappling experience. Blue belt or equivalent background suggested.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn-primary" href="#" onclick="showPage('survey')">Book a Free Trial →</a>
+          <a class="btn-secondary" href="#" onclick="showPage('schedule')">View Schedule</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;">
+          <div class="label mb-2">Coaches</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.9375rem;font-weight:600;">Jacob Moses <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">Fri Evenings</span></div>
+            <div style="font-size:0.9375rem;font-weight:600;">TJ Grant <span style="font-size:0.75rem;color:var(--primary);font-weight:700;">Tue / Thu</span></div>
+          </div>
+        </div>
+        <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:1.25rem;padding:1.5rem;">
+          <div style="font-size:0.8125rem;color:var(--text-muted);">Included with any BJJ or Full Access membership</div>
+          <a class="btn-primary" href="#" onclick="showPage('programs')" style="margin-top:1rem;width:100%;justify-content:center;">See All Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-prog-ajj -->
+
+<!-- ═══ PROGRAM: MMA ═══ -->
+<div id="page-prog-mma" class="page">
+  <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF81WuwYS3JdpSvL8lT1FLWSaI6RQM312BmWgfxzNrWaPLh80XYC861Bsbr66eg0bMFLE3yaYZ5FCBx6ONa0uijr4O3rSGN3w2fiVG_88bouWL9Z4TTS4jMHRcj6sfq9Kezp9OUR7mDg5KQoef_XGmTjAFLtFjWmETbr637OZJAnCnyGQW2xQkwGBaYEpxfMBLQPQMak-RRWlLT7f_Bof5fGNDRYl1GhwDfw79_n6Y-pxJ4qmz4a8hVzZHYy7bMrm9tnrILOhTuk" alt="MMA training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
+    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+      <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
+      <div class="label mb-1">Competition</div>
+      <h1 class="display" style="margin-bottom:0.75rem;">Mixed<br>Martial Arts</h1>
+      <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">Coached by a former UFC top-contender. This is where striking, wrestling, and grappling become one — and where serious competitors are built.</p>
+    </div>
+  </div>
+  <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h2 class="headline-md mb-3">What to Expect</h2>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Grant's MMA program is designed for athletes who want to compete. Led by TJ Grant — former UFC #1 lightweight contender with a 21–5 professional record — sessions focus on translating your separate striking and grappling skills into a unified fight game.</p>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Classes cover cage/fence work, takedown defence under punches, ground-and-pound control, and sparring protocols that develop real ring awareness without unnecessary punishment.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">A background in BJJ and/or striking is strongly recommended before joining MMA-specific classes.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn-primary" href="#" onclick="showPage('survey')">Book a Free Trial →</a>
+          <a class="btn-secondary" href="#" onclick="showPage('instructors')">Meet the Coaches</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;">
+          <div class="label mb-2">Head Coach</div>
+          <div style="font-size:0.9375rem;font-weight:600;margin-bottom:0.25rem;">TJ Grant</div>
+          <div style="font-size:0.8125rem;color:var(--text-muted);">21–5 pro MMA · UFC #1 Lightweight · BJJ Black Belt · 20+ years experience</div>
+        </div>
+        <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:1.25rem;padding:1.5rem;">
+          <div style="font-size:0.8125rem;color:var(--text-muted);">Included with Full Access (BJJ + MT) membership</div>
+          <a class="btn-primary" href="#" onclick="showPage('programs')" style="margin-top:1rem;width:100%;justify-content:center;">See All Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-prog-mma -->
 
 
 <script>
