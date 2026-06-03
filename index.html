@@ -144,6 +144,7 @@
     }
 
     section { padding: 5rem 0; }
+    #programs-section { padding-top: 2rem; }
 
     .label {
       font-size: 0.8125rem;
@@ -266,7 +267,6 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: calc(100vh - 64px);
       display: flex;
       align-items: center;
       position: relative;
@@ -309,7 +309,7 @@
       z-index: 4;
       max-width: 1280px;
       margin: 0 auto;
-      padding: 5rem var(--gutter);
+      padding: 5rem var(--gutter) 2rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
@@ -1264,7 +1264,7 @@
     <div class="container">
       <div class="mb-4">
         <div class="label mb-1">What We Train</div>
-        <h2 class="headline-lg">Programs Built for<br>Every Level</h2>
+        <h2 class="headline-lg">Programs Built for Every Level</h2>
       </div>
 
       <div class="programs-grid">
@@ -1331,7 +1331,7 @@
         <!-- CTA card -->
         <div class="prog-card" style="grid-column: span 4; background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.25); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:1rem;">
           <div class="prog-icon" style="margin-bottom:0;">🎯</div>
-          <h3 class="prog-title" style="color: var(--primary);">Not Sure<br>Where to Start?</h3>
+          <h3 class="prog-title" style="color: var(--primary);">Not Sure Where to Start?</h3>
           <p class="prog-desc">Book a free trial class. Try any program, no commitment required.</p>
           <a class="btn-primary" href="#" onclick="showPage('survey')" style="margin-top:0.5rem;">Get Started</a>
         </div>
@@ -1345,7 +1345,7 @@
       <div class="philosophy-grid">
         <div>
           <div class="label mb-2">Our Philosophy</div>
-          <h2 class="headline-lg mb-3">Where Grit Meets<br>Science</h2>
+          <h2 class="headline-lg mb-3">Where Grit Meets Science</h2>
           <div class="values-grid">
             <div class="value-item">
               <div class="value-num">01</div>
@@ -1430,7 +1430,7 @@
         </div>
         <div class="yt-text">
           <div class="label mb-1">On YouTube</div>
-          <h2 class="headline-lg">Watch. Learn.<br>Train Smarter.</h2>
+          <h2 class="headline-lg">Watch. Learn. Train Smarter.</h2>
           <p class="yt-sub">
             Follow our channel for technique breakdowns, highlight reels from competition, and behind-the-scenes training footage. New content drops weekly — subscribe to stay sharp between classes.
           </p>
@@ -1472,7 +1472,7 @@
     <div class="container">
       <div class="cta-banner">
         <div>
-          <h2 class="headline-lg">Ready to Step<br>on the Mat?</h2>
+          <h2 class="headline-lg">Ready to Step on the Mat?</h2>
           <p>First class is always free. No experience needed. Just show up.</p>
         </div>
         <a class="btn-dark" href="#" onclick="showPage('survey')">Book Your Free Trial Today →</a>
@@ -1488,7 +1488,7 @@
         <p style="color:var(--text-muted);font-size:0.9375rem;">900 Windmill Rd, Unit 302 · Dartmouth, NS B3B 1P7</p>
       </div>
       <div style="border-radius:var(--radius-card);overflow:hidden;border:1px solid var(--border);">
-        <iframe src="https://maps.google.com/maps?q=Grant%27s+Martial+Arts+Academy+Dartmouth+NS&z=11&output=embed" width="100%" height="360" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Grant's Martial Arts Academy location"></iframe>
+        <iframe src="https://maps.google.com/maps?q=Grant%27s+Martial+Arts+Academy+Dartmouth+NS&ll=44.60,-63.568&z=11&output=embed" width="100%" height="360" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Grant's Martial Arts Academy location"></iframe>
       </div>
     </div>
   </section>
@@ -1676,7 +1676,7 @@
 
     <!-- Step 1 -->
     <div class="survey-step active" id="step1">
-      <h2>What Are You<br>Interested In?</h2>
+      <h2>What Are You Interested In?</h2>
       <p class="step-sub">Select all disciplines that interest you.</p>
       <div class="option-grid">
         <div class="option-item" onclick="toggleOption(this)">
@@ -1712,7 +1712,7 @@
 
     <!-- Step 2 -->
     <div class="survey-step" id="step2">
-      <h2>What Are Your<br>Training Goals?</h2>
+      <h2>What Are Your Training Goals?</h2>
       <p class="step-sub">Pick the one that resonates most.</p>
       <div class="option-grid">
         <div class="option-item" onclick="selectSingle(this)">
@@ -1749,7 +1749,7 @@
 
     <!-- Step 3 -->
     <div class="survey-step" id="step3">
-      <h2>When Can You<br>Train?</h2>
+      <h2>When Can You Train?</h2>
       <p class="step-sub">Select your preferred times.</p>
       <div class="option-grid">
         <div class="option-item" onclick="toggleOption(this)">
@@ -1821,7 +1821,7 @@
   <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
     <div style="margin-bottom:3rem;">
       <div class="label mb-1">The Team</div>
-      <h1 class="display" style="margin-bottom:0.75rem;">Meet Your<br>Coaches</h1>
+      <h1 class="display" style="margin-bottom:0.75rem;">Meet Your Coaches</h1>
       <p style="color:var(--text-muted); font-size:1.0625rem; max-width:560px; line-height:1.6;">World-class practitioners who've competed at the highest levels — and come back to share everything they know.</p>
     </div>
 
@@ -2235,7 +2235,7 @@
     <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Grappling</div>
-      <h1 class="display" style="margin-bottom:0.75rem;">Brazilian<br>Jiu Jitsu</h1>
+      <h1 class="display" style="margin-bottom:0.75rem;">Brazilian Jiu Jitsu</h1>
       <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">The foundation of everything we do. Whether you're day one white belt or a seasoned competitor, BJJ at Grant's is structured, technical, and ego-free.</p>
     </div>
   </div>
@@ -2388,7 +2388,7 @@
     <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Youth · Ages 5+</div>
-      <h1 class="display" style="margin-bottom:0.75rem;">Kids<br>Program</h1>
+      <h1 class="display" style="margin-bottom:0.75rem;">Kids Program</h1>
       <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">More than martial arts. Kids learn discipline, respect, and confidence in a structured, fun, and safe environment led by TJ Grant and Alex MacDonald.</p>
     </div>
   </div>
@@ -2430,7 +2430,7 @@
     <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">No-Gi Grappling</div>
-      <h1 class="display" style="margin-bottom:0.75rem;">AJJ &<br>No-Gi</h1>
+      <h1 class="display" style="margin-bottom:0.75rem;">AJJ & No-Gi</h1>
       <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">Submission wrestling without the gi. Heel hooks, leg locks, and tight scrambles — the cutting edge of modern grappling taught by black belts who compete in it.</p>
     </div>
   </div>
@@ -2578,7 +2578,7 @@
     <div class="container prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Women's BJJ Team</div>
-      <h1 class="display" style="margin-bottom:0.75rem;">Roll Like<br>a Girl</h1>
+      <h1 class="display" style="margin-bottom:0.75rem;">Roll Like a Girl</h1>
       <p style="color:var(--text-muted);font-size:1.125rem;max-width:560px;line-height:1.6;">Grant's women's jiu-jitsu team. Competitive, welcoming, and tight-knit. Train with women who take the craft seriously and lift each other up in the process.</p>
     </div>
   </div>
@@ -2841,7 +2841,7 @@
       </div>
       <div>
         <div class="label mb-2">The Training Surface</div>
-        <h2 class="headline-lg mb-3">World-Class Mats.<br>Built to Last.</h2>
+        <h2 class="headline-lg mb-3">World-Class Mats. Built to Last.</h2>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Our mats aren't an afterthought — they're the single most important investment in the gym. We use professional-grade tatami-surface jigsaw puzzle mats with a 40mm compressed EVA foam core, the same standard used at IBJJF World Championships and UFC training facilities.</p>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">The tatami weave on the surface provides exactly the right amount of grip — enough to hold position through scrambles, not so much that it tears skin on stand-ups. Underneath, the high-density foam core absorbs impact correctly: it compresses under dynamic load (throws, takedowns, sprawls) but doesn't bottom out. That combination protects joints, reduces cumulative fatigue, and means you can train more days in a row without your knees paying for it.</p>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:2rem;">The foam is closed-cell, which matters more than most people realize. Closed-cell EVA doesn't absorb sweat or bacteria into the core — it stays at the surface where it can be properly disinfected. We clean the mats after every session with hospital-grade antimicrobial solution. The mats you train on here will outlast you at this gym.</p>
@@ -2884,7 +2884,7 @@
       <div class="col-2-to-1" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
         <div>
           <div class="label mb-2">Striking Zone</div>
-          <h2 class="headline-lg mb-3">Muay Thai Equipment.<br>No Compromises.</h2>
+          <h2 class="headline-lg mb-3">Muay Thai Equipment. No Compromises.</h2>
           <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">The striking side of the gym is stocked the same way we stock everything else — with equipment that performs under real training loads, not just looks good in photos. Every piece is chosen by coaches who've used it in their own competition careers.</p>
           <p style="color:var(--text-muted);line-height:1.7;margin-bottom:2rem;">Whether you're working combinations, building conditioning, or dialling in timing — the tools are here.</p>
 
@@ -2939,7 +2939,7 @@
       <div class="col-2-to-1" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
         <div>
           <div class="label mb-2">After Training</div>
-          <h2 class="headline-lg mb-3">Dual Private<br>Showers.</h2>
+          <h2 class="headline-lg mb-3">Dual Private Showers.</h2>
           <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Two separate, fully private shower rooms mean you can train at lunch, clean up, and get back to your day without a second thought. No waiting, no communal setup, no awkwardness — just get in, get out.</p>
           <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Both showers run full hot water with plenty of pressure. Each room has a bench, coat hooks, and a private changing area attached. Soap and shampoo dispensers are stocked daily.</p>
           <p style="color:var(--text-muted);line-height:1.7;">This matters practically for anyone fitting training into a work schedule. Gym bag, train, shower, done. The midday BJJ class crowd relies on this setup every weekday.</p>
@@ -2984,7 +2984,7 @@
       <p style="color:var(--text-muted);font-size:0.9375rem;margin-bottom:1.25rem;">Dartmouth, NS &nbsp;B3B 1P7</p>
       <div style="border-radius:var(--radius-card);overflow:hidden;border:1px solid var(--border);">
         <iframe
-          src="https://maps.google.com/maps?q=Grant%27s+Martial+Arts+Academy+Dartmouth+NS&z=11&output=embed"
+          src="https://maps.google.com/maps?q=Grant%27s+Martial+Arts+Academy+Dartmouth+NS&ll=44.60,-63.568&z=11&output=embed"
           width="100%" height="400" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="Grant's Martial Arts Academy location"></iframe>
       </div>
