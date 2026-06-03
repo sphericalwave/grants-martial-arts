@@ -6,7 +6,9 @@ Single-page app (`index.html`) for [grantsmartialarts.ca](https://www.grantsmart
 
 - **Home** — hero, programs grid, schedule preview, philosophy, YouTube, Instagram strip
 - **Schedule** — full weekly class table with day/discipline filters
-- **Programs** — Gi BJJ, No-Gi BJJ, Muay Thai, Kids, Open Mat with live-site images + pricing
+- **Programs** — Gi BJJ, No-Gi BJJ, Muay Thai, Kids, Open Mat, MMA Team, Roll Like a Girl — with live-site images + pricing
+  - **MMA Team** (`page-prog-mma`) — young FLA competitive team mentored by TJ Grant. Roster: Matt "Tiger" Harnish (#1 contender 145lb), Breton "The Weapon" Maloney (FLA 135lb champ), James Richardson, Dylan "Candyman" Benjamin, Evan "ET" Thom. Links to [fightleagueatlantic.com](https://www.fightleagueatlantic.com).
+  - **Roll Like a Girl** (`page-prog-rlag`) — women's BJJ team program, all levels welcome
 - **Instructors** — TJ Grant, Alex MacDonald, supporting coaches
 - **Facility** — photos, stats, Google Maps embed
 - **Members** — portal links (GymDesk)
