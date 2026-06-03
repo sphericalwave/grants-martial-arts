@@ -1124,6 +1124,10 @@
       .day-tabs { flex-wrap: wrap; }
       .schedule-tabs { flex-wrap: wrap; }
 
+      /* Program detail pages */
+      .prog-detail-grid { grid-template-columns: 1fr !important; }
+      .prog-detail-hero-content { padding-top: 4rem !important; }
+
       /* Survey buttons */
       .survey-nav { flex-wrap: wrap; gap: 0.75rem; align-items: center; }
       .survey-nav .btn-secondary { flex: 0 0 auto; }
@@ -2166,7 +2170,7 @@
   <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden; margin-bottom:0;">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycQjXj6W9IN9ZCleCBKSeUeEq0DHntpZ465wMZbG3bs6fXiNDCAtCCPxYbT-uZKwTqVhyGm4etsBfXOsnAc_LwOQJGz0S6x3of4wm99qtpG5pBACtVx8pmJoymsAT7VW26e1QPKrLuF94q1sXkglFssq2DtzdtE6ielS09bVDtH_aKKfJr9ioCU2jDo_rrj1X5WpSiDRHsOYktM5s6cTe_1KutakYf8n6TUCdJIPD7fKde4XCJIgn60tTKImUo3JqdXsQsc4ax_c" alt="BJJ class" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.75;"/>
     <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
-    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+    <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Grappling</div>
       <h1 class="display" style="margin-bottom:0.75rem;">Brazilian<br>Jiu Jitsu</h1>
@@ -2174,7 +2178,7 @@
     </div>
   </div>
   <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+    <div class="prog-detail-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
       <div>
         <h2 class="headline-md mb-3">What to Expect</h2>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Our BJJ program runs classes six days a week across all skill levels. Fundamentals classes focus on core positions, escapes, and submissions — taught in a structured, drill-heavy format designed so beginners thrive and experienced practitioners sharpen their foundations.</p>
@@ -2276,7 +2280,7 @@
   <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtYDVbRrI0oBz_SH2gCDBP3a0UNluVaD3pSTePh2Q4yoTLd2O4wa-HqixYe2NtYakdYi3OQkmziRDSbQaNEcqxYyyFlr44Z5xxtTE-06O05jSsAMagUe1jJujKHc2BOYYnp8dblgiQcbhVSonbcPy8QKAVAEsisJGP2uxOwk-lCcu8sDvN7WY1okTyDFfsteXuP98JIbLsk1dsqwUtcF06qFXvrkUWb8vMlGAuJW2BsgF2iF0E9_hYENY14u7R71tdm_om9gQqsbE" alt="Muay Thai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.75;"/>
     <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
-    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+    <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Striking</div>
       <h1 class="display" style="margin-bottom:0.75rem;">Muay Thai</h1>
@@ -2284,7 +2288,7 @@
     </div>
   </div>
   <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+    <div class="prog-detail-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
       <div>
         <h2 class="headline-md mb-3">What to Expect</h2>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Muay Thai at Grant's is technical-first. Classes are structured around proper form, timing, and combinations before power. You'll develop real striking skill whether your goal is fitness, self-defence, or stepping in the ring.</p>
@@ -2319,7 +2323,7 @@
   <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQfmy435PSef7Q8igvPz8p_aJmQ7uXKJuy9LEPXjU8d2W5k_QTVncqZSvXHuyZZ7CJo4cf6NGf_kTq2u7rqozQB5WTglWJ1tV2WNZDQzRf2Ug4ZTph57I8hyfWTYLlN7IL2o6BzahVmabNWwdaF7t3Se0Z-We-9M1b3xO1Lk-TZFPeXGtKbXN5NTMiDPghB4xXP8aZU87_IIkIwA-sUlEFSZELvxdrAIVXLzBdX2bW-dHYdebOTyHgMsMYpePQZcIj4wIPUVwmiPs" alt="Kids program" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.75;"/>
     <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
-    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+    <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Youth · Ages 5+</div>
       <h1 class="display" style="margin-bottom:0.75rem;">Kids<br>Program</h1>
@@ -2327,7 +2331,7 @@
     </div>
   </div>
   <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+    <div class="prog-detail-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
       <div>
         <h2 class="headline-md mb-3">What to Expect</h2>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">The kids program is designed to meet children where they are and grow with them. Classes cover foundational BJJ and movement skills, but the emphasis is always on character — showing up, trying hard, respecting classmates, and having fun.</p>
@@ -2361,7 +2365,7 @@
   <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8ulIFosx-G3fRbx9htOEQx1luPg3R_j_6u6wNh8hMi3ahy6IC3a3FmJs6lbBReLmF9RQkOVVf1Q318b0Xh0otVXhFoQLwL1lK3OJU7L5NrNs8303RK3oWUdp-VLqYh1ctf6cbpNZa6UIvASzRfYEzfjNZRa0ArDErbeQ-adKHCnJLVdkJUhTYaSL2nOMxqPPHF0stxDtwLH3Hh9vel_zp7rBTDJ8GTY8e3TUmQnp2v5CRU9GchtCEQSVH6UwXkDjGJD7KJeqg6k" alt="AJJ Nogi grappling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.75;"/>
     <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
-    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+    <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">No-Gi Grappling</div>
       <h1 class="display" style="margin-bottom:0.75rem;">AJJ &<br>No-Gi</h1>
@@ -2369,7 +2373,7 @@
     </div>
   </div>
   <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+    <div class="prog-detail-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
       <div>
         <h2 class="headline-md mb-3">What to Expect</h2>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">American Jiu Jitsu (AJJ) and No-Gi grappling at Grant's covers the full modern submission wrestling ruleset — including leg entanglements, heel hooks, and the reaping positions that are central to today's competition meta.</p>
@@ -2402,7 +2406,7 @@
   <div style="position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden;">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF81WuwYS3JdpSvL8lT1FLWSaI6RQM312BmWgfxzNrWaPLh80XYC861Bsbr66eg0bMFLE3yaYZ5FCBx6ONa0uijr4O3rSGN3w2fiVG_88bouWL9Z4TTS4jMHRcj6sfq9Kezp9OUR7mDg5KQoef_XGmTjAFLtFjWmETbr637OZJAnCnyGQW2xQkwGBaYEpxfMBLQPQMak-RRWlLT7f_Bof5fGNDRYl1GhwDfw79_n6Y-pxJ4qmz4a8hVzZHYy7bMrm9tnrILOhTuk" alt="MMA training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.75;"/>
     <div style="position:absolute;inset:0;background:linear-gradient(to top, #0a0d14 10%, rgba(10,13,20,0.6) 60%, transparent 100%);"></div>
-    <div class="container" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
+    <div class="container" class="prog-detail-hero-content" style="position:relative;padding-bottom:3rem;padding-top:8rem;">
       <a onclick="showPage('programs')" style="font-size:0.8125rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.375rem;margin-bottom:1rem;">← Programs</a>
       <div class="label mb-1">Competition</div>
       <h1 class="display" style="margin-bottom:0.75rem;">Mixed<br>Martial Arts</h1>
@@ -2410,7 +2414,7 @@
     </div>
   </div>
   <div class="container" style="padding-top:3rem;padding-bottom:5rem;">
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+    <div class="prog-detail-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
       <div>
         <h2 class="headline-md mb-3">What to Expect</h2>
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">Grant's MMA program is designed for athletes who want to compete. Led by TJ Grant — former UFC #1 lightweight contender with a 21–5 professional record — sessions focus on translating your separate striking and grappling skills into a unified fight game.</p>
