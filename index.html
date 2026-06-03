@@ -276,18 +276,30 @@
       padding: 0;
     }
 
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: grayscale(1);
+      opacity: 0.22;
+      z-index: 1;
+    }
+
     .hero-bg {
       position: absolute;
       inset: 0;
+      z-index: 2;
       background:
-        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(59,130,246,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(59,130,246,0.06) 0%, transparent 50%),
-        #0a0d14;
+        linear-gradient(to right, #0a0d14 40%, rgba(10,13,20,0.6) 70%, rgba(10,13,20,0.3) 100%),
+        linear-gradient(to top, #0a0d14 0%, transparent 40%);
     }
 
     .hero-grid {
       position: absolute;
       inset: 0;
+      z-index: 3;
       background-image:
         linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
@@ -296,7 +308,7 @@
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       max-width: 1280px;
       margin: 0 auto;
       padding: 5rem var(--gutter);
@@ -392,6 +404,10 @@
       border-color: var(--border-hover);
       background: var(--card-hi);
       transform: translateY(-3px);
+    }
+    .prog-card:hover img {
+      opacity: 0.55;
+      filter: grayscale(0.4);
     }
 
     .prog-icon {
@@ -1016,6 +1032,7 @@
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
+    <img class="hero-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfCdqx2gdfbLrlKeCY8ZsZFdsee7FAFww2A4rkwouoxy0KIZwtb_pFi1Ij3Xlob1KFGVGy3SsVG3x2S9kKbN3CW4OMXZ4OStjxL0pxt__zZSe3a_1Eos7XDV3QGHwBGFWo_I7_cJ5ygfegCFqqiBiZrGgwNq4dOFwvlIRyKnXnymXQgDivTTw6xeuspZ4MrwaFx9Th4S7WyDqQEimeH92J1pzAoS56Tj2tySOY0vVqBhqvi3CbTft5vJFggXcbXYwdVHx4heOOL-g" alt="" />
     <div class="hero-content">
       <div>
         <div class="hero-eyebrow">
@@ -1067,45 +1084,60 @@
       </div>
 
       <div class="programs-grid">
-        <!-- BJJ — large card -->
-        <div class="prog-card" style="grid-column: span 5;">
-          <div class="prog-icon">🥋</div>
-          <div class="prog-tag">Flagship Program</div>
-          <h3 class="prog-title">Brazilian Jiu Jitsu</h3>
-          <p class="prog-desc">From your first armbar to competition-level guard passes. Our BJJ curriculum covers fundamentals through advanced technique with structured belt progression and a coaching staff that trains alongside you.</p>
-          <div style="margin-top:1.25rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
-            <span class="class-level level-fund">Fundamentals</span>
-            <span class="class-level level-adv">Advanced</span>
-            <span class="class-level level-all">Open Mat</span>
+        <!-- BJJ — large card with photo -->
+        <div class="prog-card" style="grid-column: span 5; position:relative; overflow:hidden; min-height:320px; padding:0;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycQjXj6W9IN9ZCleCBKSeUeEq0DHntpZ465wMZbG3bs6fXiNDCAtCCPxYbT-uZKwTqVhyGm4etsBfXOsnAc_LwOQJGz0S6x3of4wm99qtpG5pBACtVx8pmJoymsAT7VW26e1QPKrLuF94q1sXkglFssq2DtzdtE6ielS09bVDtH_aKKfJr9ioCU2jDo_rrj1X5WpSiDRHsOYktM5s6cTe_1KutakYf8n6TUCdJIPD7fKde4XCJIgn60tTKImUo3JqdXsQsc4ax_c" alt="BJJ class" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" class="prog-photo" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
+          <div style="position:relative;z-index:2;padding:2rem;">
+            <div class="prog-tag">Flagship Program</div>
+            <h3 class="prog-title">Brazilian Jiu Jitsu</h3>
+            <p class="prog-desc">From your first armbar to competition-level guard passes. Our BJJ curriculum covers fundamentals through advanced technique with structured belt progression and a coaching staff that trains alongside you.</p>
+            <div style="margin-top:1.25rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="class-level level-fund">Fundamentals</span>
+              <span class="class-level level-adv">Advanced</span>
+              <span class="class-level level-all">Open Mat</span>
+            </div>
           </div>
         </div>
-        <!-- Muay Thai -->
-        <div class="prog-card" style="grid-column: span 4;">
-          <div class="prog-icon">🥊</div>
-          <div class="prog-tag">Striking</div>
-          <h3 class="prog-title">Muay Thai</h3>
-          <p class="prog-desc">The art of eight limbs. Develop devastating striking combinations, clinch work, and the conditioning of a professional fighter. All levels welcome.</p>
+        <!-- Muay Thai with photo -->
+        <div class="prog-card" style="grid-column: span 4; position:relative; overflow:hidden; min-height:320px; padding:0;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtYDVbRrI0oBz_SH2gCDBP3a0UNluVaD3pSTePh2Q4yoTLd2O4wa-HqixYe2NtYakdYi3OQkmziRDSbQaNEcqxYyyFlr44Z5xxtTE-06O05jSsAMagUe1jJujKHc2BOYYnp8dblgiQcbhVSonbcPy8QKAVAEsisJGP2uxOwk-lCcu8sDvN7WY1okTyDFfsteXuP98JIbLsk1dsqwUtcF06qFXvrkUWb8vMlGAuJW2BsgF2iF0E9_hYENY14u7R71tdm_om9gQqsbE" alt="Muay Thai" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
+          <div style="position:relative;z-index:2;padding:2rem;">
+            <div class="prog-tag">Striking</div>
+            <h3 class="prog-title">Muay Thai</h3>
+            <p class="prog-desc">The art of eight limbs. Develop devastating striking combinations, clinch work, and the conditioning of a professional fighter. All levels welcome.</p>
+          </div>
         </div>
-        <!-- Kids -->
-        <div class="prog-card" style="grid-column: span 3;">
-          <div class="prog-icon">⭐</div>
-          <div class="prog-tag">Youth</div>
-          <h3 class="prog-title">Kids Program</h3>
-          <p class="prog-desc">Building confidence, discipline, and respect through martial arts. Ages 5+.</p>
+        <!-- Kids with photo -->
+        <div class="prog-card" style="grid-column: span 3; position:relative; overflow:hidden; min-height:320px; padding:0;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQfmy435PSef7Q8igvPz8p_aJmQ7uXKJuy9LEPXjU8d2W5k_QTVncqZSvXHuyZZ7CJo4cf6NGf_kTq2u7rqozQB5WTglWJ1tV2WNZDQzRf2Ug4ZTph57I8hyfWTYLlN7IL2o6BzahVmabNWwdaF7t3Se0Z-We-9M1b3xO1Lk-TZFPeXGtKbXN5NTMiDPghB4xXP8aZU87_IIkIwA-sUlEFSZELvxdrAIVXLzBdX2bW-dHYdebOTyHgMsMYpePQZcIj4wIPUVwmiPs" alt="Kids program" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
+          <div style="position:relative;z-index:2;padding:2rem;">
+            <div class="prog-tag">Youth</div>
+            <h3 class="prog-title">Kids Program</h3>
+            <p class="prog-desc">Building confidence, discipline, and respect through martial arts. Ages 5+.</p>
+          </div>
         </div>
-        <!-- AJJ / Nogi -->
-        <div class="prog-card" style="grid-column: span 4;">
-          <div class="prog-icon">🤼</div>
-          <div class="prog-tag">No-Gi Grappling</div>
-          <h3 class="prog-title">AJJ & Nogi</h3>
-          <p class="prog-desc">Technical grappling without the gi. Heel hooks, leg locks, and submission wrestling refined for advanced practitioners and competitors.</p>
+        <!-- AJJ / Nogi with photo -->
+        <div class="prog-card" style="grid-column: span 4; position:relative; overflow:hidden; min-height:280px; padding:0;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8ulIFosx-G3fRbx9htOEQx1luPg3R_j_6u6wNh8hMi3ahy6IC3a3FmJs6lbBReLmF9RQkOVVf1Q318b0Xh0otVXhFoQLwL1lK3OJU7L5NrNs8303RK3oWUdp-VLqYh1ctf6cbpNZa6UIvASzRfYEzfjNZRa0ArDErbeQ-adKHCnJLVdkJUhTYaSL2nOMxqPPHF0stxDtwLH3Hh9vel_zp7rBTDJ8GTY8e3TUmQnp2v5CRU9GchtCEQSVH6UwXkDjGJD7KJeqg6k" alt="AJJ Nogi grappling" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
+          <div style="position:relative;z-index:2;padding:2rem;">
+            <div class="prog-tag">No-Gi Grappling</div>
+            <h3 class="prog-title">AJJ & Nogi</h3>
+            <p class="prog-desc">Technical grappling without the gi. Heel hooks, leg locks, and submission wrestling refined for advanced practitioners and competitors.</p>
+          </div>
         </div>
-        <!-- MMA -->
-        <div class="prog-card" style="grid-column: span 4;">
-          <div class="prog-icon">🏆</div>
-          <div class="prog-tag">Competition</div>
-          <h3 class="prog-title">Mixed Martial Arts</h3>
-          <p class="prog-desc">Full contact competition prep. Combining striking, wrestling, and grappling under one roof with coaches who have competed at the highest levels.</p>
+        <!-- MMA with photo -->
+        <div class="prog-card" style="grid-column: span 4; position:relative; overflow:hidden; min-height:280px; padding:0;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAF81WuwYS3JdpSvL8lT1FLWSaI6RQM312BmWgfxzNrWaPLh80XYC861Bsbr66eg0bMFLE3yaYZ5FCBx6ONa0uijr4O3rSGN3w2fiVG_88bouWL9Z4TTS4jMHRcj6sfq9Kezp9OUR7mDg5KQoef_XGmTjAFLtFjWmETbr637OZJAnCnyGQW2xQkwGBaYEpxfMBLQPQMak-RRWlLT7f_Bof5fGNDRYl1GhwDfw79_n6Y-pxJ4qmz4a8hVzZHYy7bMrm9tnrILOhTuk" alt="MMA training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.35;transition:opacity 0.4s,filter 0.4s;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,13,20,0.95) 0%, rgba(10,13,20,0.5) 50%, transparent 100%);"></div>
+          <div style="position:relative;z-index:2;padding:2rem;">
+            <div class="prog-tag">Competition</div>
+            <h3 class="prog-title">Mixed Martial Arts</h3>
+            <p class="prog-desc">Full contact competition prep. Combining striking, wrestling, and grappling under one roof with coaches who have competed at the highest levels.</p>
+          </div>
         </div>
         <!-- CTA card -->
         <div class="prog-card" style="grid-column: span 4; background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.25); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:1rem;">
@@ -1198,10 +1230,12 @@
   <section style="background: var(--surface); padding: 5rem 0;">
     <div class="container">
       <div class="yt-grid">
-        <div class="yt-embed">
-          <div class="yt-placeholder">
+        <div class="yt-embed" style="position:relative;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQYDs3MYgEbiQCTvj2ccUYMrjgJtwcmClBXIIpPz3GCc11ImxPdxlpZIq0k6HWvxWA6AmT8HUFQXkkIaRlK6LEUodSmua-yEJEeklWCbLukb-iGogTBVIBzzQtk42YsOx2xyiY0pVN7_JEniJ0sAwLNDsPInrd5eiCJLzvPH4k2r3kooKJD1wsxzt0ma0O5_RvMQz2pC9K27YtOeP2dcZXt8upAcUgdfxLxG82cl7IQ4Np1Hvp2DYorz1ck6fMkrT5nv2ZwCUEffE" alt="Grant's Martial Arts training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(0.6);" />
+          <div style="position:absolute;inset:0;background:rgba(10,13,20,0.55);"></div>
+          <div class="yt-placeholder" style="position:relative;z-index:2;">
             <div style="font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; color:var(--text-muted); text-transform:uppercase;">Latest from the Mat</div>
-            <div class="yt-play">▶</div>
+            <a href="https://youtube.com/@grantsmartialarts" target="_blank" rel="noopener" style="text-decoration:none;"><div class="yt-play">▶</div></a>
             <div class="yt-label">@grantsmartialarts</div>
           </div>
         </div>
@@ -1215,6 +1249,26 @@
             <a class="btn-primary" href="https://youtube.com/@grantsmartialarts" target="_blank">Subscribe →</a>
             <a class="btn-secondary" href="https://instagram.com/grantsmartialarts" target="_blank">Instagram</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <section style="padding:0 0 3rem;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap);">
+        <div style="height:220px; border-radius:var(--radius-card); overflow:hidden;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH6bwK7HM9kypQGQvIuCezf4rkoeGy_G_FvUOsP2JOnmWH6TN1UGb70gx_Bh_5zjcf7y24WVoTrf3rAvcQcB835erhUBKfIygUV6sgcKM3kHqGFpgnXAJEEUcFu7J6lkay8MHhNzbsCmCPW3qG11KzhgIGdxifUEkUslJc_egejvWJo7QPzllBbRFTr_kA_mxxhysrXocN1LTCu_FLTWleDZYG6UuVZbNSDdViZm7n4UHGZ0dVGZnyVDLxAQ_YYcg4uHoze2M22UY" alt="" style="width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);transition:filter 0.4s;" onmouseenter="this.style.filter='grayscale(0)'" onmouseleave="this.style.filter='grayscale(0.5)'" />
+        </div>
+        <div style="height:220px; border-radius:var(--radius-card); overflow:hidden;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf8ulIFosx-G3fRbx9htOEQx1luPg3R_j_6u6wNh8hMi3ahy6IC3a3FmJs6lbBReLmF9RQkOVVf1Q318b0Xh0otVXhFoQLwL1lK3OJU7L5NrNs8303RK3oWUdp-VLqYh1ctf6cbpNZa6UIvASzRfYEzfjNZRa0ArDErbeQ-adKHCnJLVdkJUhTYaSL2nOMxqPPHF0stxDtwLH3Hh9vel_zp7rBTDJ8GTY8e3TUmQnp2v5CRU9GchtCEQSVH6UwXkDjGJD7KJeqg6k" alt="" style="width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);transition:filter 0.4s;" onmouseenter="this.style.filter='grayscale(0)'" onmouseleave="this.style.filter='grayscale(0.5)'" />
+        </div>
+        <div style="height:220px; border-radius:var(--radius-card); overflow:hidden;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgengTwDgMDSPu8oWVjImetiiCgyRQ5shol9Vhpt-NlEJKh3HaO1WKjH3hYorrExvMJAIFrcK7nYnPr7Dv-VVPfGPiA0k8KzZF-khCWtEdpUDUTQ1OzFkPF317KSNXRJzQmLLWpVMfwIcrFP5LjUJoUkoAbWgljEoe7ph9-Inhg6FSHkjqMNIpwJPi3eKFuDzFcX0kC9ov8AuS8k0UBLot1cGZJx8qdPAdfyX1pqjCkZli6biftq2_FPaV0-BvKvFIqSHk8gMFYx4" alt="" style="width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);transition:filter 0.4s;" onmouseenter="this.style.filter='grayscale(0)'" onmouseleave="this.style.filter='grayscale(0.5)'" />
+        </div>
+        <div style="height:220px; border-radius:var(--radius-card); overflow:hidden;">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCahEXrWNft7XHIxpgx7GF_6b-ADeh8RsVnu9oUdfNq4C84ARuBuY8Qwe-iT34ytJ5qOT1m_vglHJ-KTKM6a0mQLZtkU0U_6-tpVu8xaYJ9XRvo3IKtUT7DAopbiKk0QMVcrUGr7QYeYP7mS5P-2csfYISq-Ogqqh97C5Biq1XaywjujHYpgauCty2X5pC_WQ6euv7F6OfnFXmgljASpGdfIFXshdIwhadYmfehoVNZtnOTwO2ZmiAb0A00EduZlP3YmD58kCB4G_o" alt="" style="width:100%;height:100%;object-fit:cover;filter:grayscale(0.5);transition:filter 0.4s;" onmouseenter="this.style.filter='grayscale(0)'" onmouseleave="this.style.filter='grayscale(0.5)'" />
         </div>
       </div>
     </div>
@@ -1291,10 +1345,13 @@
 ═══════════════════════════════════════════════════════ -->
 <div id="page-schedule" class="page">
 
-  <div class="page-hero">
-    <div class="label mb-1">Weekly Training</div>
-    <h1 class="display" style="margin-bottom:0.5rem;">Class Schedule</h1>
-    <p style="color:var(--text-muted); font-size:1.0625rem; max-width:540px;">Mon–Fri 12:00 PM–9:00 PM · Saturday 10:00 AM–2:00 PM · Closed Sunday</p>
+  <div class="page-hero" style="position:relative; overflow:hidden;">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2e-OpeQ7TpPfXUgQ92CYqrspEFh-2R0_hQspG8UUoEsiPg5z4olhrm46Mq0pBZ1YXazjdPJMRljIJqvKGAtya1m8u_N3wftlIodiBY9gyoYeMZ5a99dSlx6azBYxxba8akIEhPevpb1QNTM_GbB-F42UUk_kaDGNsvGENPWatxbYngjDxTgljHQr1u6kNMBirjgwVgFfEMthSETmbQFsErGcjBRpIEIpRYs51EjwQ59KwVsECPZX-zOOHt3ZK5V1j_d_iS_U77Yk" alt="" style="position:absolute;right:0;top:0;height:100%;width:50%;object-fit:cover;filter:grayscale(0.7);opacity:0.25;border-radius:0 0 0 var(--radius-card);" />
+    <div style="position:relative;">
+      <div class="label mb-1">Weekly Training</div>
+      <h1 class="display" style="margin-bottom:0.5rem;">Class Schedule</h1>
+      <p style="color:var(--text-muted); font-size:1.0625rem; max-width:540px;">Mon–Fri 12:00 PM–9:00 PM · Saturday 10:00 AM–2:00 PM · Closed Sunday</p>
+    </div>
   </div>
 
   <div class="container" style="padding-bottom:5rem;">
@@ -1347,10 +1404,13 @@
 <div id="page-portal" class="page">
 
   <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
-    <div class="portal-hero" style="padding:0 0 3rem;">
-      <div class="label mb-1">Exclusive Access</div>
-      <h1 class="display mb-2">Members Only</h1>
-      <p style="color:var(--text-muted); font-size:1.0625rem; max-width:520px; margin:0 auto;">This is where Old School Grit meets New School Technique. Your training hub — curriculum, shop, and community in one place.</p>
+    <div class="portal-hero" style="padding:0 0 3rem; position:relative; overflow:hidden;">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9syFdnNp7dKe5l50V5xW42aoplZChyyWTl1FLwfcIA85W8twPe2mCxTgF12PiZmHqghR5vVn7BIX0wgJ20U3_ILVp0PCH7c6BP0wOZkq4e23sujXOwwcTwtcINP_Fmu3OPcG0g1kg5FAQnwmTNUXkxmMsSkfQcMg9Ki2IsyoTDOG0oD7KloE1TITI_GlMdquAgGRpqMxjHFBb_xIaaTNUFTTmzLe0EawOYUoMVvkdSu7_h5BcUSplN1wG4_Cvo8DDx-wU0sCoBf8" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.1;" />
+      <div style="position:relative;">
+        <div class="label mb-1">Exclusive Access</div>
+        <h1 class="display mb-2">Members Only</h1>
+        <p style="color:var(--text-muted); font-size:1.0625rem; max-width:520px; margin:0 auto;">This is where Old School Grit meets New School Technique. Your training hub — curriculum, shop, and community in one place.</p>
+      </div>
     </div>
 
     <div class="portal-grid mb-6">
