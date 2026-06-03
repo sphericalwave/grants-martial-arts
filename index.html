@@ -1121,10 +1121,10 @@
       .schedule-tabs { flex-wrap: wrap; }
 
       /* Survey buttons */
-      .survey-nav { flex-wrap: wrap; gap: 0.75rem; }
-      .survey-nav .btn-primary,
-      .survey-nav .btn-secondary { flex: 1; justify-content: center; min-width: 120px; text-align: center; }
-      .survey-name-grid { grid-template-columns: 1fr !important; }
+      .survey-nav { flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+      .survey-nav .btn-secondary { flex: 0 0 auto; }
+      .survey-nav .step-indicator { margin-left: auto; }
+      .survey-submit-btn { width: 100%; flex: none !important; order: 10; justify-content: center; text-align: center; }
     }
   </style>
 </head>
@@ -1602,7 +1602,7 @@
     </div>
 
     <!-- Core values strip -->
-    <div class="col-3-to-1" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:3rem;">
+    <div class="col-3-to-1" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; margin-bottom:3rem;">
       <div style="text-align:center; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:1.25rem;">
         <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--primary); margin-bottom:0.25rem;">DISCIPLINE</div>
         <p style="font-size:0.875rem; color:var(--text-muted);">Show up every day, no excuses.</p>
@@ -1731,18 +1731,19 @@
       </div>
 
       <div style="background:var(--card); border:1px solid var(--border); border-radius:1rem; padding:1.25rem 1.5rem; margin-top:1rem;">
-        <div style="font-weight:700; font-size:0.9375rem; margin-bottom:0.5rem;">Your Contact Info</div>
-        <div class="survey-name-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+        <div style="font-weight:700; font-size:0.9375rem; margin-bottom:0.75rem;">Your Contact Info</div>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
           <input type="text" placeholder="First Name" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
           <input type="text" placeholder="Last Name" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
-          <input type="email" placeholder="Email Address" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s; grid-column:span 2;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
+          <input type="email" placeholder="Email Address" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
+          <input type="tel" placeholder="Phone (optional)" style="background:var(--card-higher); border:none; border-bottom:2px solid var(--border); border-radius:0.5rem 0.5rem 0 0; padding:0.75rem; color:var(--text); font-family:Inter,sans-serif; font-size:0.9375rem; outline:none; transition:border-color 0.15s;" onfocus="this.style.borderBottomColor='var(--primary)'" onblur="this.style.borderBottomColor='var(--border)'">
         </div>
       </div>
 
-      <div class="survey-nav" style="margin-top:1.5rem;">
+      <div class="survey-nav survey-nav-final" style="margin-top:1.5rem;">
         <button class="btn-secondary" onclick="goStep(2)">← Back</button>
         <span class="step-indicator">Step 3 of 3</span>
-        <button class="btn-primary" onclick="completeSurvey()">Book My Trial 🎯</button>
+        <button class="btn-primary survey-submit-btn" onclick="completeSurvey()">Book My Trial 🎯</button>
       </div>
     </div>
 
